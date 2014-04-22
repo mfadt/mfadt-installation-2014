@@ -1,0 +1,19 @@
+{
+  "name": "mfadt-installation-2014",
+  "version": "0.0.1",
+  "description": "Visualzer for 3D Meshes of Students for 2014 Thesis Exhibition",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "3d",
+    "mesh",
+    "websocket"
+  ],
+  "author": "Matt Felsen",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^0.4.31"
+  }
+}
