@@ -24,3 +24,69 @@ $(document).ready( function() {
 		$('#circle').css( '-webkit-transform', 'rotateX(' + value + 'deg)' );
 	});
 });
+
+// var container, stats;
+
+// var camera, scene, renderer;
+
+// var mesh, geometry, materials;
+
+// init();
+// animate();
+
+// function init() {
+// 	container = document.getElementById('container');
+
+// 	camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
+// 	camera.position.set(0,100,300);
+
+// 	controls = new THREE.TrackballControls( camera );
+// 	controls.addEventListener( 'change', render );
+
+// 	//Stats
+// 	stats = new Stats();
+// 	stats.domElement.style.position = 'absolute';
+// 	stats.domElement.style.top = '0px';
+// 	container.appendChild( stats.domElement );
+
+// 	scene = new THREE.Scene();
+
+// 	var spotLight = new THREE.PointLight( 0xffffff, 1.0, 1000 );
+// 	spotLight.position.set( 0, 0, 500 );
+// 	scene.add(spotLight);
+
+// 	var hemiLight = new THREE.HemisphereLight( 0xffffff );
+// 	scene.add(hemiLight);
+
+// 	renderer = new THREE.CanvasRenderer();
+// 	renderer.setClearColor( 0x111111 );
+// 	renderer.setSize( window.innerWidth, window.innerHeight );
+
+// 	container.appendChild( renderer.domElement );
+
+// 	var material = new THREE.MeshBasicMaterial( { color: 0xFF0000 } );
+// 	var geometry = new THREE.RingGeometry( 100, 103, 12, 12 );
+// 	mesh = new THREE.Mesh( geometry, material );
+// 	mesh.rotation.x = - Math.PI / 2;
+// 	scene.add( mesh );
+
+// }
+
+// function animate() {
+
+// 	requestAnimationFrame( animate );
+// 	controls.update();
+
+	
+
+// 	stats.update();
+
+// 	render();
+// }
+
+// function render() {
+// 	camera.lookAt( scene.position );
+
+// 	renderer.render( scene, camera );
+
+// }
