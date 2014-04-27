@@ -2,8 +2,12 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    ofSetVerticalSync(true);
+    ofSetSmoothLighting(true);
+    ofEnableDepthTest();
+    
     ofSetLogLevel(OF_LOG_VERBOSE);
-    client.connect("localhost", 8080);
+    client.connect("macaroni.local", 8081);
     ofSetLogLevel(OF_LOG_ERROR);
     
     client.addListener(this);
@@ -14,26 +18,57 @@ void testApp::setup(){
 	
 	radius = 300;
 	angle = 0;
+    amp = 300;
+    
+    tiltLR = 0;
+    tiltFB = 0;
+    dir = 0;
+    
+    //Easy Cam
+    cam.setDistance(500);
+    
+    //Sphere
+    sphere.setRadius(150);
+    sphere.setPosition(0,0,0);
+    ofSetSphereResolution(64);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	
+    
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	
+    
+    ofDisableLighting();
+    ofSetColor(255);
+    ofDrawBitmapString(ofToString(tiltLR) + " | " + ofToString(tiltFB), 20,20);
+    
+    ofEnableLighting();
+
 	ofPushMatrix();
 	{
 		ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-		ofRotateX(angle);
-		ofRotateY(ofGetElapsedTimef()*4);
-		
-		ofCircle(0, 0, radius);
+        
+        cam.begin();
+        
+        for ( int i = 0; i < clients.size(); i++ ) {
+            clients[i].draw();
+        }
+        
+        sphere.draw();
+        sphere.drawAxes( 300 );
+        
+        cam.end();
+
 	}
 	ofPopMatrix();
-	
+}
+
+void testApp::newUser(string user, int r, int g, int b ){
+    Light client( user, r, g, b );
+    clients.push_back( client );
 }
 
 //--------------------------------------------------------------
@@ -50,7 +85,7 @@ void testApp::onOpen( ofxLibwebsockets::Event& args ){
 //--------------------------------------------------------------
 void testApp::onClose( ofxLibwebsockets::Event& args ){
     cout<<"on close"<<endl;
-	client.connect("localhost", 8080);
+	client.connect("macaroni.local", 8081);
 }
 
 //--------------------------------------------------------------
@@ -60,7 +95,7 @@ void testApp::onIdle( ofxLibwebsockets::Event& args ){
 
 //--------------------------------------------------------------
 void testApp::onMessage( ofxLibwebsockets::Event& args ){
-//    cout<<"got message "<<args.message<<endl;
+    //cout<<"got message "<<args.message<<endl;
 	
 	vector <string> parts = ofSplitString(args.message, ",");
 	
@@ -73,6 +108,35 @@ void testApp::onMessage( ofxLibwebsockets::Event& args ){
 		cout << "angle: " << parts[1] << endl;
 		angle = ofToFloat(parts[1]);
 	}
+    
+    if (parts[0] == "new-user") {
+        cout << "new-user: " << parts[1] << " | (" << parts[2] << "," << parts[3] << "," << parts[4] << ")" << endl;
+        newUser( parts[1], ofToInt(parts[2]), ofToInt(parts[3]), ofToInt(parts[4]) );
+    }
+    
+    if (parts[0] == "orientation") {
+        tiltLR = ofToFloat(parts[2]);
+//        tiltLR = ofDegToRad(ofMap( tiltLR, -180, 180, 0, 360 ));
+//        
+        tiltFB = ofToFloat(parts[3]);
+//        tiltFB = ofDegToRad(ofMap( tiltFB, -90, 90, 360, 0 ));
+//        
+//        dir = ofToFloat(parts[4]);
+        
+        for ( int i = 0; i < clients.size(); i++ ) {
+            if ( parts[1] == clients[i].userId ) {
+                clients[i].update( tiltLR, tiltFB );
+            }
+        }
+    }
+    
+    if (parts[0] == "close"){
+        for ( int i = 0; i < clients.size(); i++ ){
+            if ( parts[1] == clients[i].userId ) {
+                //clients.erase( clients.begin() + i );
+            }
+        }
+    }
 }
 
 //--------------------------------------------------------------

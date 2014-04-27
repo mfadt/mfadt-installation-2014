@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "ofxLibwebsockets.h"
 
+#include "Light.h"
+
 class testApp : public ofBaseApp{
 	
 public:
@@ -19,7 +21,7 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-	
+    
 	ofxLibwebsockets::Client client;
     
 	// websocket methods
@@ -31,5 +33,17 @@ public:
 	void onBroadcast( ofxLibwebsockets::Event& args );
 	
 	float radius, angle;
-	
+    
+    float amp;
+    
+    float tiltLR, tiltFB, dir;
+    
+    // 3d
+    ofEasyCam cam;    
+    ofIcoSpherePrimitive sphere;
+
+    //Users
+    void newUser( string user, int r, int g, int b );
+    vector<Light> clients;
+    
 };
