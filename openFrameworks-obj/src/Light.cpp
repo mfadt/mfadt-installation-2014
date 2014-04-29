@@ -23,3 +23,8 @@ void Light::enable(){
     light.setPosition( pos );
     light.enable();
 }
+
+void Light::disable(){
+    
+    light.disable();
+}

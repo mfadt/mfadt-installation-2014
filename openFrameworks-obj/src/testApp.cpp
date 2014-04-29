@@ -18,7 +18,7 @@ void testApp::setup(){
     
     //  Easy Cam
     //
-    cam.setDistance(500);
+    cam.setDistance(200);
     
     //  Model
     //
@@ -36,10 +36,12 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    for (int i = 0; i < killList.size(); i++) {
+        lights.erase(killList[i]);
+    }
+    killList.clear();
     
-    ofDisableLighting();
     ofSetColor(255);
-    
     ofEnableLighting();
 	ofPushMatrix();
 	{
@@ -49,10 +51,14 @@ void testApp::draw(){
             it->second.enable();
         }
         
-        ofScale(300, 300,300);
+        ofScale(400, 400,400);
         texture.bind();
         mesh.draw();
         texture.unbind();
+        
+        for (std::map<string,Light>::iterator it=lights.begin(); it!=lights.end(); ++it){
+            it->second.disable();
+        }
 
         cam.end();
 
@@ -98,7 +104,8 @@ void testApp::onMessage( ofxLibwebsockets::Event& args ){
             lights[id].tiltLR = ofToFloat(parts[2]);
             lights[id].tiltFB = ofToFloat(parts[3]);
         } else if (parts[0] == "close"){
-            lights.erase(id);
+            killList.push_back(parts[0]);
+            cout << "Close light " << id << endl;
         }
     }
 

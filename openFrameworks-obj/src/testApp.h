@@ -38,6 +38,7 @@ public:
     //  Clients
     //
     map<string,Light> lights;
+    vector<string> killList;
     
     // 3D Stuff
     //

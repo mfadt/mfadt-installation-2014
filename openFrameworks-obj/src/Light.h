@@ -16,6 +16,7 @@ public:
     Light();
     void update( float tiltLR, float tiltFB );
     void enable();
+    void disable();
     
     ofColor color;
     
