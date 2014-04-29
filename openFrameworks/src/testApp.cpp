@@ -7,7 +7,7 @@ void testApp::setup(){
     ofEnableDepthTest();
     
     ofSetLogLevel(OF_LOG_VERBOSE);
-    client.connect("macaroni.local", 8081);
+    client.connect("149.31.195.8", 8081);
     ofSetLogLevel(OF_LOG_ERROR);
     
     client.addListener(this);
@@ -31,6 +31,8 @@ void testApp::setup(){
     sphere.setRadius(150);
     sphere.setPosition(0,0,0);
     ofSetSphereResolution(64);
+    
+    //149.31.195.8:8080
 }
 
 //--------------------------------------------------------------
