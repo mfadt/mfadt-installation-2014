@@ -35,9 +35,9 @@ public:
     
     ofxLibwebsockets::Client client;
 	
-	float radius, angle;
-    float amp;
-    float tiltLR, tiltFB, dir;
+    //  Clients
+    //
+    map<string,Light> lights;
     
     // 3D Stuff
     //
@@ -45,8 +45,4 @@ public:
     ofMesh  mesh;
     ofTexture texture;
 
-    //  Users
-    //
-    void newUser( string user, int r, int g, int b );
-    vector<Light> clients;
 };

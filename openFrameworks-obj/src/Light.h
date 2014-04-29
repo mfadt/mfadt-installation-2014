@@ -11,14 +11,19 @@
 #include "ofMain.h"
 
 class Light {
-    public:
-        Light( string _userId, int r, int g, int b );
-        void update( float tiltLR, float tiltFB );
-        void draw();
+public:
     
-        string userId;
-        ofLight light;
-        ofVec3f pos;
-        ofColor c;
-        float radius;
+    Light();
+    void update( float tiltLR, float tiltFB );
+    void enable();
+    
+    ofColor color;
+    
+    float tiltLR;
+    float tiltFB;
+    float radius;
+    
+private:
+    ofLight light;
+    ofVec3f pos;
 };

@@ -15,14 +15,6 @@ void testApp::setup(){
 	ofBackground(0);
 	ofSetCircleResolution(60);
 	ofNoFill();
-	
-	radius = 300;
-	angle = 0;
-    amp = 300;
-    
-    tiltLR = 0;
-    tiltFB = 0;
-    dir = 0;
     
     //  Easy Cam
     //
@@ -47,37 +39,26 @@ void testApp::draw(){
     
     ofDisableLighting();
     ofSetColor(255);
-    ofDrawBitmapString(ofToString(tiltLR) + " | " + ofToString(tiltFB), 20,20);
     
     ofEnableLighting();
-
 	ofPushMatrix();
 	{
         cam.begin();
         
-        for ( int i = 0; i < clients.size(); i++ ) {
-            clients[i].draw();
+        for (std::map<string,Light>::iterator it=lights.begin(); it!=lights.end(); ++it){
+            it->second.enable();
         }
         
-        ofScale(100, 100,100);
+        ofScale(300, 300,300);
         texture.bind();
         mesh.draw();
         texture.unbind();
 
-        for ( int i = 0; i < clients.size(); i++ ) {
-            clients[i].light.disable();
-        }
-        
-        
         cam.end();
 
 	}
 	ofPopMatrix();
-}
-
-void testApp::newUser(string user, int r, int g, int b ){
-    Light client( user, r, g, b );
-    clients.push_back( client );
+    ofDisableLighting();
 }
 
 //--------------------------------------------------------------
@@ -94,7 +75,7 @@ void testApp::onOpen( ofxLibwebsockets::Event& args ){
 //--------------------------------------------------------------
 void testApp::onClose( ofxLibwebsockets::Event& args ){
     cout<<"on close"<<endl;
-	client.connect("macaroni.local", 8081);
+	client.connect("localhost", 8081);
 }
 
 //--------------------------------------------------------------
@@ -104,48 +85,23 @@ void testApp::onIdle( ofxLibwebsockets::Event& args ){
 
 //--------------------------------------------------------------
 void testApp::onMessage( ofxLibwebsockets::Event& args ){
-    //cout<<"got message "<<args.message<<endl;
-	
-	vector <string> parts = ofSplitString(args.message, ",");
-	
-	if (parts[0] == "radius") {
-		cout << "radius: " << parts[1] << endl;
-		radius = ofToFloat(parts[1]);
-		
-	}
-	if (parts[0] == "angle") {
-		cout << "angle: " << parts[1] << endl;
-		angle = ofToFloat(parts[1]);
-	}
+
+	vector<string> parts = ofSplitString(args.message, ",");
     
-    if (parts[0] == "new-user") {
-        cout << "new-user: " << parts[1] << " | (" << parts[2] << "," << parts[3] << "," << parts[4] << ")" << endl;
-        newUser( parts[1], ofToInt(parts[2]), ofToInt(parts[3]), ofToInt(parts[4]) );
-    }
-    
-    if (parts[0] == "orientation") {
-        tiltLR = ofToFloat(parts[2]);
-//        tiltLR = ofDegToRad(ofMap( tiltLR, -180, 180, 0, 360 ));
-//        
-        tiltFB = ofToFloat(parts[3]);
-//        tiltFB = ofDegToRad(ofMap( tiltFB, -90, 90, 360, 0 ));
-//        
-//        dir = ofToFloat(parts[4]);
-        
-        for ( int i = 0; i < clients.size(); i++ ) {
-            if ( parts[1] == clients[i].userId ) {
-                clients[i].update( tiltLR, tiltFB );
-            }
+    if(parts.size() > 1){
+        string id = parts[1];
+        if (parts[0] == "radius") {
+            lights[id].radius = ofToFloat(parts[1]);
+        } else if (parts[0] == "new-user") {
+            lights[id].color.set(ofToInt(parts[2]), ofToInt(parts[3]), ofToInt(parts[4]));
+        } else if (parts[0] == "orientation") {
+            lights[id].tiltLR = ofToFloat(parts[2]);
+            lights[id].tiltFB = ofToFloat(parts[3]);
+        } else if (parts[0] == "close"){
+            lights.erase(id);
         }
     }
-    
-    if (parts[0] == "close"){
-        for ( int i = 0; i < clients.size(); i++ ){
-            if ( parts[1] == clients[i].userId ) {
-                //clients.erase( clients.begin() + i );
-            }
-        }
-    }
+
 }
 
 //--------------------------------------------------------------

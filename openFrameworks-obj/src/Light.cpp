@@ -8,31 +8,18 @@
 
 #include "Light.h"
 
-Light::Light( string _userId, int r, int g, int b ) {
-    userId = _userId;
-    c = ofColor( r, g, b );
-    pos.set(0,0, 250);
+Light::Light() {
     radius = 300.0;
     
-    light.setDiffuseColor( c );
+    light.setDiffuseColor( color );
     light.setSpecularColor( ofFloatColor(1.f, 1.f, 1.f));
 }
 
-void Light::update( float tiltLR, float tiltFB ) {
-    //Moving around a sphere (doesn't really work)
-//    float theta = -tiltLR;
-//    float phi = -tiltFB;
-//    
-//    pos.z = radius * sin( theta ) * sin( phi );
-//    pos.y = radius * cos( theta );
-//    pos.x = radius * sin( theta ) * cos( phi );
-    
-    
+void Light::enable(){
     pos.x = ofMap(tiltLR, -180, 180, -400, 400);
     pos.y = ofMap(tiltFB, -90, 90, -400, 400);
-}
-
-void Light::draw() {
-    light.enable();
+    
+    light.setDiffuseColor( color );
     light.setPosition( pos );
+    light.enable();
 }
