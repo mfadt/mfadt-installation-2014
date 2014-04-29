@@ -6,7 +6,6 @@ var WebSocketServer = require('ws').Server;
 
 //Settings
 var WWW_ROOT = './www/';
-var HTTP_HOST = 'macaroni.local';
 var HTTP_PORT = 8080;
 var WS_PORT = 8081;
 
@@ -53,7 +52,7 @@ http.createServer( function( req, res ) {
         res.end(fileBytes);
     });
 
-}).listen(HTTP_PORT, HTTP_HOST);
+}).listen(HTTP_PORT);
 
 var radius = 200;
 var angle = 0;
@@ -93,7 +92,7 @@ wss.on('connection', function(ws) {
         if (event == 'orientation') {
             if (OF) {
               OF.send('orientation,' + ws.id + ',' + parts[1] + ',' + parts[2] + ',' + parts[3]);
-            } 
+            }
 
         }
 

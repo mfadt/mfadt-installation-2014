@@ -1,4 +1,4 @@
-var socket = new WebSocket("ws://macaroni.local:8081/");
+var socket = new WebSocket("ws://149.31.227.15:8081/");
 
 //Generate a random color for our light.
 var red = Math.floor(Math.random()*150) + 100;

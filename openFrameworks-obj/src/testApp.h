@@ -1,7 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+
 #include "ofxLibwebsockets.h"
+#include "ofxAssimpModelLoader.h"
 
 #include "Light.h"
 
@@ -22,27 +24,29 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
     
-	ofxLibwebsockets::Client client;
-    
-	// websocket methods
+	// WebSocket
+    //
 	void onConnect( ofxLibwebsockets::Event& args );
 	void onOpen( ofxLibwebsockets::Event& args );
 	void onClose( ofxLibwebsockets::Event& args );
 	void onIdle( ofxLibwebsockets::Event& args );
 	void onMessage( ofxLibwebsockets::Event& args );
 	void onBroadcast( ofxLibwebsockets::Event& args );
+    
+    ofxLibwebsockets::Client client;
 	
 	float radius, angle;
-    
     float amp;
-    
     float tiltLR, tiltFB, dir;
     
-    // 3d
-    ofEasyCam cam;    
-    ofIcoSpherePrimitive sphere;
+    // 3D Stuff
+    //
+    ofEasyCam cam;
+    ofMesh  mesh;
+    ofTexture texture;
 
-    //Users
+    //  Users
+    //
     void newUser( string user, int r, int g, int b );
     vector<Light> clients;
 };
