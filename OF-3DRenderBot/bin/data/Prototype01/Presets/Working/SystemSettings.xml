@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>38.000000000</XPosition>
-    <YPosition>450.000000000</YPosition>
+    <XPosition>28.000000000</XPosition>
+    <YPosition>428.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -11,47 +11,57 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>42</Kind>
+    <Name>Faces_for_Frame</Name>
+    <Value>49</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Explotion</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>Speed</Name>
-    <Value>0.014778325</Value>
+    <Value>0.200000003</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Rotation_Speed</Name>
-    <Value>0.007142857</Value>
+    <Value>0.009359606</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attraction</Name>
-    <Value>0.773398995</Value>
+    <Value>0.886699498</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attraction_radius</Name>
-    <Value>0.512315273</Value>
+    <Value>0.063645318</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>traction</Name>
-    <Value>0.177339897</Value>
+    <Value>0.029556651</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>flocking_force</Name>
-    <Value>0.009852217</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>turbulence</Name>
-    <Value>0.000591133</Value>
+    <Value>0.000788177</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>neigbordhood</Name>
-    <Value>0.494088680</Value>
+    <Value>1.011330009</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>independence</Name>
-    <Value>0.625615776</Value>
+    <Value>0.620689631</Value>
 </Widget>

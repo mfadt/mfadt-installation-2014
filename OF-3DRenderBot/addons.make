@@ -1,4 +1,5 @@
 ofxAssimpModelLoader
+ofxFTGL
 ofxLibwebsockets
 ofxUI
 ofxUIProject

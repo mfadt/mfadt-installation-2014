@@ -3,12 +3,12 @@
     <Name>3DGRID</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>332.000000000</YPosition>
+    <YPosition>401.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,12 +18,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>majorGridLineWidth</Name>
-    <Value>0.500000000</Value>
+    <Value>3.401477814</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridScale</Name>
-    <Value>4.901477814</Value>
+    <Value>6.852216721</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,17 +33,17 @@
 <Widget>
     <Kind>28</Kind>
     <Name>gridColor</Name>
-    <XValue>0.000000000</XValue>
-    <YValue>0.054687500</YValue>
-    <RColor>255</RColor>
-    <GColor>207</GColor>
-    <BColor>206</BColor>
+    <XValue>0.545000017</XValue>
+    <YValue>0.460937500</YValue>
+    <RColor>9</RColor>
+    <GColor>255</GColor>
+    <BColor>216</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridAlpha</Name>
-    <Value>15.073891640</Value>
+    <Value>52.758621216</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -53,11 +53,11 @@
 <Widget>
     <Kind>28</Kind>
     <Name>gridMajorColor</Name>
-    <XValue>0.000000000</XValue>
-    <YValue>0.000000000</YValue>
-    <RColor>249</RColor>
-    <GColor>234</GColor>
-    <BColor>234</BColor>
+    <XValue>0.675000012</XValue>
+    <YValue>0.101562500</YValue>
+    <RColor>184</RColor>
+    <GColor>226</GColor>
+    <BColor>250</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
@@ -78,15 +78,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>fogFalloffDistance</Name>
-    <Value>437.931030273</Value>
+    <Value>534.482727051</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogFalloffExpo</Name>
-    <Value>8.147783279</Value>
+    <Value>8.842364311</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogFalloffScale</Name>
-    <Value>1.200000048</Value>
+    <Value>0.987684727</Value>
 </Widget>

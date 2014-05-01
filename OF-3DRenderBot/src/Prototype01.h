@@ -9,32 +9,41 @@
 
 #include "UI3DProject.h"
 #include "UI3DGrid.h"
-#include "UIShader.h"
 #include "SuperParticle.h"
 
+#include "ofxFTGL.h"
 #include "ofxLibwebsockets.h"
 #include "ofxAssimpModelLoader.h"
 
 struct Triangle : public SuperParticle {
     aPoint a,b,c;
-    aPoint normal;
+    aPoint normal,original_normal;
     ofQuaternion rot;
     
     void rotateTo(const Triangle &_other,float _speed){
 
-        a.goTo((ofPoint)_other.a,9.0);
-        b.goTo((ofPoint)_other.b,9.0);
-        c.goTo((ofPoint)_other.c,9.0);
+        a.goTo((ofPoint)_other.a,2.0);
+        b.goTo((ofPoint)_other.b,2.0);
+        c.goTo((ofPoint)_other.c,2.0);
         
-        normal.goTo((ofPoint)_other.normal,0.5);
+        
+        original_normal.goTo((ofPoint)_other.original_normal,0.9);
+//        normal.goTo((ofPoint)_other.normal,0.9);
+        
         rot.slerp(_speed,rot,_other.rot);
     }
     
     void draw(){
         
-        ofPoint A = (ofPoint)*this+rot*a;
-        ofPoint B = (ofPoint)*this+rot*b;
-        ofPoint C = (ofPoint)*this+rot*c;
+        ofQuaternion dir;
+        dir.makeRotate(180, acc.getNormalized());
+        
+        ofPoint A = (ofPoint)*this+dir*rot*a;
+        ofPoint B = (ofPoint)*this+dir*rot*b;
+        ofPoint C = (ofPoint)*this+dir*rot*c;
+        
+        normal.set(dir*rot*original_normal);
+        normal.normalize();
         
         glNormal3f(normal.x, normal.y, normal.z);
         glVertex3f(A.x, A.y, A.z);
@@ -80,28 +89,34 @@ public:
     void onBroadcast( ofxLibwebsockets::Event& args );
     
 protected:
-  
-    void deCompose(ofMesh &_mesh, vector<Triangle>& _triangles);
-    
     ofxLibwebsockets::Client client;
   
-    UI3DGrid    grid;
+    //  3D Elements
+    //
+    UI3DGrid        grid;
+    ofxFTGLFont     font;
     
-    vector<string> names;
-    int nCounter;
+    //  3D Models
+    //
+    vector<string>  names;
+    int             nCounter;
+    bool            bNext;
     
-    ofMesh  meshTarget;
+    ofxAssimpModelLoader meshLoader;
+    ofMesh              meshTarget;
+    vector<Triangle>    triangles;
+    vector<Triangle>    trianglesTarget;
+    ofPoint             meshOffset;
+    int                 nFaceCounter;
+    int                 nFaceForFrame;
     
-    vector<Triangle> triangles;
-    vector<Triangle> trianglesTarget;
+    float               explotion;
     
-    ofPoint modelOffset;
-    
+    //  Flocking
+    //
     ofPoint globalOffset;
     float   speed;
     float   targetAttraction, targetRadius, targetTraction;
     float   turbulence,neigbordhood,independence,flocking;
     float   rotateSpeed;
-    
-    bool    bNext;
 };

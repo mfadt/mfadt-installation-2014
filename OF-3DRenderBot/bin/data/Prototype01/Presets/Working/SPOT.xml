@@ -3,7 +3,7 @@
     <Name>SPOT</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>247.000000000</YPosition>
+    <YPosition>351.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -73,25 +73,25 @@
 <Widget>
     <Kind>25</Kind>
     <Name>dSAT</Name>
-    <Value>0.973821998</Value>
+    <Value>0.879581153</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>dBRI</Name>
-    <Value>0.863874316</Value>
+    <Value>0.853403151</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>sHUE</Name>
-    <Value>0.000000000</Value>
+    <Value>0.125654444</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>sSAT</Name>
-    <Value>0.000000000</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>sBRI</Name>
-    <Value>0.528795838</Value>
+    <Value>0.000000000</Value>
 </Widget>
