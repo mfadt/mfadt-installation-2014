@@ -1,0 +1,5 @@
+ofxAssimpModelLoader
+ofxLibwebsockets
+ofxUI
+ofxUIProject
+ofxXmlSettings
