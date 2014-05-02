@@ -102,7 +102,6 @@ void Prototype01::selfUpdate(){
         nCounter = (nCounter+1)%names.size();
         meshTarget = meshLoader.getMesh(0);
         meshOffset = meshLoader.getSceneCenter();
-        cout << meshOffset << endl;
         nFaceCounter = 0;
         bNext = false;
     }
