@@ -25,3 +25,23 @@
     <Name>ADD</Name>
     <Value>&#x1B;</Value>
 </Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>&#x1B;FRONT</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FAR</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RIGHT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UNDER</Name>
+    <Value>0</Value>
+</Widget>

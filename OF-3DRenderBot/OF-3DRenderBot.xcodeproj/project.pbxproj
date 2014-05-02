@@ -19,6 +19,7 @@
 		26874b150c8535aea0f24c8cd56cf117 /* ofxUIImageSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2689c5c8a97002c218125f2fe1675282 /* ofxUIImageSlider.cpp */; };
 		2d1b256a63780bb017becd1a57da62a3 /* Recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644e48902b62fe6144a2bf9fb149e169 /* Recorder.cpp */; };
 		341db29ff1d926957e046f48a7a4cf25 /* SystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5cf537034ea91bb69884bf12f5c3159b /* SystemTextbox.mm */; };
+		3D3AA1F1191460AF000B1D57 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AA1EF191460AF000B1D57 /* Triangle.cpp */; };
 		3DD5C152191274FA00A4383A /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C13C191274FA00A4383A /* Grid.cpp */; };
 		3DD5C153191274FA00A4383A /* UI2DGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C140191274FA00A4383A /* UI2DGrid.cpp */; };
 		3DD5C154191274FA00A4383A /* UI3DGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C142191274FA00A4383A /* UI3DGrid.cpp */; };
@@ -222,6 +223,8 @@
 		377d4405d8997e654021dfb164d61ac2 /* ec.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ec.h; path = ../../../addons/ofxLibwebsockets/libs/openssl/openssl/ec.h; sourceTree = SOURCE_ROOT; };
 		388aaf8a80c304bb3e971e09a6a15467 /* FTGLBitmapFont.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = FTGLBitmapFont.h; path = ../../../addons/ofxFTGL/libs/FTGL/include/FTGL/FTGLBitmapFont.h; sourceTree = SOURCE_ROOT; };
 		38ebd5650a3bf5a499b07525be5fdbc6 /* ofxUISuperCanvas.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUISuperCanvas.cpp; path = ../../../addons/ofxUI/src/ofxUISuperCanvas.cpp; sourceTree = SOURCE_ROOT; };
+		3D3AA1EF191460AF000B1D57 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
+		3D3AA1F0191460AF000B1D57 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
 		3DD5C13C191274FA00A4383A /* Grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
 		3DD5C13D191274FA00A4383A /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
 		3DD5C13E191274FA00A4383A /* GridBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridBox.h; sourceTree = "<group>"; };
@@ -979,6 +982,8 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				87d382f79966184cf62383a1c2f1ce06 /* Prototype01.h */,
 				31b4509dc7322cd2c19880fb2df8285b /* Prototype01.cpp */,
+				3D3AA1F0191460AF000B1D57 /* Triangle.h */,
+				3D3AA1EF191460AF000B1D57 /* Triangle.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1441,6 +1446,7 @@
 				59d828ffa934ce170aa312a1c2a9333d /* HotKeys_impl_linux.cpp in Sources */,
 				edaac915856fa53c6e992677ede51729 /* HotKeys_impl_mac.mm in Sources */,
 				ee2a94f476344c37c2e03fb87ac9b561 /* HotKeys_impl_win.cpp in Sources */,
+				3D3AA1F1191460AF000B1D57 /* Triangle.cpp in Sources */,
 				3DD5C157191274FA00A4383A /* Particle.cpp in Sources */,
 				341db29ff1d926957e046f48a7a4cf25 /* SystemTextbox.mm in Sources */,
 				b2c03436e3b61f5881013b24d6eb085d /* UI2DProject.cpp in Sources */,

@@ -3,7 +3,7 @@
     <Name>SystemSettings</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>176.000000000</YPosition>
+    <YPosition>154.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>Faces_for_Frame</Name>
-    <Value>78</Value>
+    <Value>39</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,17 +23,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Rotation_Speed</Name>
-    <Value>0.088669948</Value>
+    <Value>0.802955687</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attraction</Name>
-    <Value>0.778325140</Value>
+    <Value>0.216748774</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attraction_radius</Name>
-    <Value>0.058768470</Value>
+    <Value>2.618226767</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

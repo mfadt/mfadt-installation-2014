@@ -43,7 +43,6 @@ void Prototype01::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 void Prototype01::selfSetupSystemGui(){
-    
     sysGui->addIntSlider("Faces_for_Frame", 0, 1000, &nFaceForFrame);
     
     sysGui->addLabel("Physics");
@@ -52,7 +51,7 @@ void Prototype01::selfSetupSystemGui(){
     
     sysGui->addLabel("Target");
     sysGui->addSlider("attraction", 0.0, 1.0, &targetAttraction);
-    sysGui->addSlider("attraction_radius", 0.01, 1.0, &targetRadius);
+    sysGui->addSlider("attraction_radius", 0.01, 10.0, &targetRadius);
     sysGui->addSlider("traction", 0.0, 1.0, &targetTraction);
     
     sysGui->addLabel("Flocking");
@@ -141,7 +140,7 @@ void Prototype01::terrainMake(){
 void Prototype01::selfUpdate(){
     
     if (bNext){
-        text = names[nCounter];
+        textName = names[nCounter];
         meshLoader.enableTextures();
         meshLoader.enableMaterials();
         meshLoader.loadModel(getDataPath()+"objs/"+names[nCounter]+"/TEXTURED_"+names[nCounter]+".obj", true);
@@ -327,16 +326,23 @@ void Prototype01::selfDraw(){
     
     materials["FONT_MAT"]->begin();
     ofPushMatrix();
-    ofTranslate(0, -25, 20);
+    ofTranslate(0, -20, 20);
     ofScale(1, -1, 1);  // Flip back since we're in 3D.
     ofSetColor(255,255*fontNameAlpha);
-    font.drawString(text, font.stringWidth(text) * -0.5f, font.stringHeight(text) * 0.5f);
+    font.drawString(textName, font.stringWidth(textName) * -0.5f, font.stringHeight(textName) * 0.5f);
     ofPopMatrix();
     materials["FONT_MAT"]->end();
     
     ofPopMatrix();
 }
 
+void Prototype01::selfDrawOverlay(){
+    
+    //  MAT: here you draw in 2D like a regular app in case you want to add overall information/images/etc
+    //
+//    ofDrawBitmapString("Hi there!", ofGetWidth()*0.5,ofGetHeight()*0.5);
+    
+}
 
 void Prototype01::selfEnd(){
 }
@@ -358,9 +364,7 @@ void Prototype01::onOpen( ofxLibwebsockets::Event& args ){
 
 //--------------------------------------------------------------
 void Prototype01::onClose( ofxLibwebsockets::Event& args ){
-    cout<<"on close"<<endl;
-    client.connect("localhost", 8080);
-}
+    cout<<"on close"<<endl;}
 
 //--------------------------------------------------------------
 void Prototype01::onIdle( ofxLibwebsockets::Event& args ){
@@ -374,7 +378,7 @@ void Prototype01::onMessage( ofxLibwebsockets::Event& args ){
     if (values[0] == "flocking"){
         flocking = ofToFloat(values[1]);
     } else if (values[0] == "text"){
-        text = values[1];
+        textName = values[1];
     } else if (values[0] == "load_model"){
         meshLoader.enableTextures();
         meshLoader.enableMaterials();
@@ -394,12 +398,15 @@ void Prototype01::onMessage( ofxLibwebsockets::Event& args ){
         speed = ofToFloat(values[1]);
     } else if (values[0] == "camera"){
         //  Load camera like FAR, FRONT, RIGHT and UNDER
-        //  You can make more
+        //  You can make more going to the pannel that say "EASYCAM" and typing new names
+        //  To transit between cameras position be sure to have the lerp in a low number.
         //
         camera->load(getDataPath()+"cameras/"+values[1]+".cam");
     }
     
-    //  ETC
+    //  Etc etc
+    //
+    //  You get the picture here
     //
 }
 
