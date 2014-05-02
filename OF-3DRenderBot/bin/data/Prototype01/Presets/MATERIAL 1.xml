@@ -12,66 +12,66 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AR</Name>
+    <Name>aHUE</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AG</Name>
+    <Name>aSAT</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AB</Name>
+    <Name>aBRI</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>DR</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DG</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>DB</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>ER</Name>
+    <Name>dHUE</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>EG</Name>
+    <Name>dSAT</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>EB</Name>
+    <Name>dBRI</Name>
+    <Value>0.600000024</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>eHUE</Name>
     <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>SR</Name>
-    <Value>0.062827222</Value>
+    <Name>eSAT</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>SG</Name>
-    <Value>0.083769552</Value>
+    <Name>eBRI</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>SB</Name>
-    <Value>0.057591461</Value>
+    <Name>sHUE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>sSAT</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>sBRI</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SHINY</Name>
-    <Value>0.394088656</Value>
+    <Value>0.000000000</Value>
 </Widget>

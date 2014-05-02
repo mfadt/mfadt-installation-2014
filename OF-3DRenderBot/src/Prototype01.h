@@ -10,6 +10,7 @@
 #include "UI3DProject.h"
 #include "UI3DGrid.h"
 #include "SuperParticle.h"
+#include "UIShader.h"
 
 #include "ofxFTGL.h"
 #include "ofxLibwebsockets.h"
@@ -17,24 +18,37 @@
 
 struct Triangle : public SuperParticle {
     aPoint a,b,c;
+    ofPoint tA,tB,tC;
     aPoint normal,original_normal;
     ofQuaternion rot;
     
     void rotateTo(const Triangle &_other,float _speed){
+        a.goTo((ofPoint)_other.a,1.0);
+        b.goTo((ofPoint)_other.b,1.0);
+        c.goTo((ofPoint)_other.c,1.0);
 
-        a.goTo((ofPoint)_other.a,2.0);
-        b.goTo((ofPoint)_other.b,2.0);
-        c.goTo((ofPoint)_other.c,2.0);
+//        if(a != _other.a){
+//            a = _other.a;
+//        } else if(b != _other.b){
+//            b = _other.b;
+//        } else if(c != _other.c){
+//            c = _other.c;
+//        } else
         
+        if(tA != _other.tA){
+            tA = _other.tA;
+        } else if(tB != _other.tB){
+            tB = _other.tB;
+        } else if(tC != _other.tC){
+            tC = _other.tC;
+        }
         
         original_normal.goTo((ofPoint)_other.original_normal,0.9);
-//        normal.goTo((ofPoint)_other.normal,0.9);
-        
         rot.slerp(_speed,rot,_other.rot);
     }
     
     void draw(){
-        
+
         ofQuaternion dir;
         dir.makeRotate(180, acc.getNormalized());
         
@@ -46,10 +60,13 @@ struct Triangle : public SuperParticle {
         normal.normalize();
         
         glNormal3f(normal.x, normal.y, normal.z);
+        glTexCoord2f(tA.x, tA.y);
         glVertex3f(A.x, A.y, A.z);
         glNormal3f(normal.x, normal.y, normal.z);
+        glTexCoord2f(tB.x, tB.y);
         glVertex3f(B.x, B.y, B.z);
         glNormal3f(normal.x, normal.y, normal.z);
+        glTexCoord2f(tC.x, tC.y);
         glVertex3f(C.x, C.y, C.z);
     }
 };
@@ -102,6 +119,7 @@ protected:
     
     ofxFTGLFont     font;
     float           fontNameSize, fontNameDeep, fontNameAlpha;
+    string          text;
     
     //  3D Models
     //
@@ -113,11 +131,18 @@ protected:
     ofMesh              meshTarget;
     vector<Triangle>    triangles;
     vector<Triangle>    trianglesTarget;
+    ofTexture           meshTexture;
+    ofFbo               meshDimTexture;
     ofPoint             meshOffset;
+    float               meshTextureAlpha;
     int                 nFaceCounter;
     int                 nFaceForFrame;
     
-    float               explotion;
+    void            terrainMake();
+    UIShader        terrainShader;
+    ofVboMesh       terrain;
+    int             terrainWidth,terrainHeight;
+    float           terrainScale, terrainWireframeAlpha;
     
     //  Flocking
     //

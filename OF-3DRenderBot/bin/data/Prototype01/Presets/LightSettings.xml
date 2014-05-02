@@ -13,20 +13,20 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SMOOTH</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>R</Name>
-    <Value>0.439790577</Value>
+    <Value>0.753926694</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>G</Name>
-    <Value>0.476439476</Value>
+    <Value>0.664921105</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>B</Name>
-    <Value>0.497381538</Value>
+    <Value>0.670156419</Value>
 </Widget>
