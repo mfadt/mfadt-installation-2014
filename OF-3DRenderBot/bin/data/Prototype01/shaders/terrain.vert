@@ -44,9 +44,12 @@ void main(){
 	texCoord = gl_MultiTexCoord0.xy;
 
 	vec4 vert = gl_Vertex;
-	float elevation = noise2f(texCoord*(cos(time*0.01)*sin(time*0.02)*0.05)*spikesFrq)*spikesPct;
+	float elevation = noise2f(texCoord*(-cos(time*0.01)*sin(time*0.02)*0.05)*spikesFrq)*spikesPct;
+	vert.x += noise2f(texCoord*(cos(time*0.001)*-sin(time*0.005)*0.05))*40.0;
+	vert.y += noise2f(texCoord*(-cos(time*0.005)*sin(time*0.001)*0.1))*30.0;
 	vert.z = (elevation*100.0);
-	gl_Position = gl_ModelViewProjectionMatrix * vert; 
+
+	gl_Position = gl_ModelViewProjectionMatrix * vert;
 
 	vec3 color = mix(color1,color2,elevation);
 	gl_FrontColor = vec4(vec3(color),0.2+elevation);//offSet;

@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1451.000000000</XPosition>
-    <YPosition>160.000000000</YPosition>
+    <XPosition>1323.000000000</XPosition>
+    <YPosition>105.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -63,20 +63,20 @@
 <Widget>
     <Kind>42</Kind>
     <Name>terrain_width</Name>
-    <Value>3941</Value>
+    <Value>4039</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>terrain_height</Name>
-    <Value>6010</Value>
+    <Value>4138</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>terrain_scale</Name>
-    <Value>28.719211578</Value>
+    <Value>51.182266235</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>terrain_wireframe_alpha</Name>
-    <Value>0.226600990</Value>
+    <Value>0.310344815</Value>
 </Widget>

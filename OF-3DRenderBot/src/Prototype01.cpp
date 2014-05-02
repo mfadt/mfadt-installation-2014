@@ -269,9 +269,9 @@ void Prototype01::selfDraw(){
     if(terrainWireframeAlpha>0.0){
         ofTranslate(0,0,1);
         terrainShader.begin();
-        terrainShader.getShader().setUniform3f("color1", 1.0, 1.0, 1.0 );
-        terrainShader.getShader().setUniform3f("color2", 1.0, 1.0, 1.0 );
-        terrainShader.getShader().setUniform1f("AlphaPct", terrainWireframeAlpha*0.1);
+        terrainShader.getShader().setUniform3f("color1", back->color2.r, back->color2.g, back->color2.b );
+        terrainShader.getShader().setUniform3f("color2", back->color2.r, back->color2.g, back->color2.b );
+        terrainShader.getShader().setUniform1f("AlphaPct", terrainWireframeAlpha);
         terrain.drawWireframe();
         terrainShader.end();
     }
@@ -370,6 +370,37 @@ void Prototype01::onIdle( ofxLibwebsockets::Event& args ){
 //--------------------------------------------------------------
 void Prototype01::onMessage( ofxLibwebsockets::Event& args ){
     cout<<"got message "<<args.message<<endl;
+    vector<string> values = ofSplitString(args.message, " ");
+    if (values[0] == "flocking"){
+        flocking = ofToFloat(values[1]);
+    } else if (values[0] == "text"){
+        text = values[1];
+    } else if (values[0] == "load_model"){
+        meshLoader.enableTextures();
+        meshLoader.enableMaterials();
+        meshLoader.loadModel(getDataPath()+"objs/"+values[1]+"/TEXTURED_"+values[1]+".obj", true);
+        ofDisableArbTex();
+        ofLoadImage(meshTexture, getDataPath()+"objs/"+values[1]+"/color.png");
+        meshDimTexture.allocate(meshTexture.getWidth(), meshTexture.getHeight());
+        ofEnableArbTex();
+        meshTarget = meshLoader.getMesh(0);
+        meshOffset = meshLoader.getSceneCenter();
+        nFaceCounter = 0;
+    } else if (values[0] == "texture_alpha"){
+        meshTextureAlpha = ofToFloat(values[1]);
+    } else if (values[0] == "speed"){
+        speed = ofToFloat(values[1]);
+    } else if (values[0] == "speed"){
+        speed = ofToFloat(values[1]);
+    } else if (values[0] == "camera"){
+        //  Load camera like FAR, FRONT, RIGHT and UNDER
+        //  You can make more
+        //
+        camera->load(getDataPath()+"cameras/"+values[1]+".cam");
+    }
+    
+    //  ETC
+    //
 }
 
 //--------------------------------------------------------------
@@ -380,10 +411,6 @@ void Prototype01::onBroadcast( ofxLibwebsockets::Event& args ){
 void Prototype01::selfKeyPressed(ofKeyEventArgs & args){
     if(args.key == ' '){
         bNext = true;
-        
-        UIMapBackground *back = (UIMapBackground*)background;
-//        lights["SPOT"]->diffuse.hue = ofRandom(1.0);
-//        lights["POINT LIGHT 1"]->diffuse.hue = ofRandom(1.0);
     }
 }
 
