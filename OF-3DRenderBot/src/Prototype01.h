@@ -65,6 +65,11 @@ public:
     void selfSetupSystemGui();
     void guiSystemEvent(ofxUIEventArgs &e);
     
+    void selfSetupRenderGui();
+    void guiRenderEvent(ofxUIEventArgs &e);
+    
+    void selfBegin();
+
     void selfSetup();
     void selfUpdate();
     
@@ -94,7 +99,9 @@ protected:
     //  3D Elements
     //
     UI3DGrid        grid;
+    
     ofxFTGLFont     font;
+    float           fontNameSize, fontNameDeep, fontNameAlpha;
     
     //  3D Models
     //

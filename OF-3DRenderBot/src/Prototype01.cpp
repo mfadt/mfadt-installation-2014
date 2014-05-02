@@ -30,8 +30,6 @@ void Prototype01::selfSetup(){
     nCounter++;
     nFaceCounter = 0;
 
-    font.loadFont(getDataPath()+"mplus-1c-regular.ttf", 19, 3);
-    
     globalOffset.set(0,0,0);
 
     bNext = false;
@@ -58,7 +56,7 @@ void Prototype01::selfSetupSystemGui(){
     sysGui->addSlider("Rotation_Speed", 0.0, 0.01, &rotateSpeed);
     
     sysGui->addLabel("Target");
-    sysGui->addSlider("attraction", 0.0, 2.0, &targetAttraction);
+    sysGui->addSlider("attraction", 0.0, 1.0, &targetAttraction);
     sysGui->addSlider("attraction_radius", 0.01, 1.0, &targetRadius);
     sysGui->addSlider("traction", 0.0, 1.0, &targetTraction);
     
@@ -69,10 +67,31 @@ void Prototype01::selfSetupSystemGui(){
     sysGui->addSlider("independence", 0, 1.0, &independence);
 }
 
-//---------------------------------------------------
+void Prototype01::selfSetupRenderGui(){
+    rdrGui->addLabel("Name_Font");
+    rdrGui->addSlider("Name_Font_Size", 0, 60, &fontNameSize);
+    rdrGui->addSlider("Name_Font_Deep", 0, 20, &fontNameDeep);
+    rdrGui->addSlider("Name-Font_Alpha", 0, 1, &fontNameAlpha);
+    
+    
+}
 
 void Prototype01::guiSystemEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
+}
+
+void Prototype01::guiRenderEvent(ofxUIEventArgs &e){
+    string name = e.widget->getName();
+    
+    if(name.find("Name_Font") == 0){
+        font.loadFont(getDataPath()+"mplus-1c-regular.ttf", fontNameSize, fontNameDeep);
+    }
+}
+
+//---------------------------------------------------
+
+void Prototype01::selfBegin(){
+    font.loadFont(getDataPath()+"mplus-1c-regular.ttf", fontNameSize, fontNameDeep);
 }
 
 void Prototype01::selfUpdate(){
@@ -184,8 +203,6 @@ void Prototype01::selfDraw(){
     ofPushMatrix();
     
     ofScale(300,300,300);
-//    ofTranslate(meshOffset*-1.0);
-    
     glBegin(GL_TRIANGLES);
     for (int i = 0; i < triangles.size(); i++) {
         triangles[i].draw();
@@ -226,9 +243,9 @@ void Prototype01::selfDraw(){
     ofPushMatrix();
     ofRotate(90, 1, 0, 0);
     ofRotate(90, 0, 1, 0);
-    ofTranslate(0, -90, 50);
+    ofTranslate(0, -50, 50);
     ofScale(1, -1, 1);  // Flip back since we're in 3D.
-    ofSetColor(255,255*(1.0-flocking));
+    ofSetColor(255,255*fontNameAlpha);
     font.drawString(names[nCounter-1], font.stringWidth(names[nCounter-1]) * -0.5f, font.stringHeight(names[nCounter-1]) * 0.5f);
     ofPopMatrix();
     materials["FONT_MAT"]->end();
@@ -277,6 +294,10 @@ void Prototype01::onBroadcast( ofxLibwebsockets::Event& args ){
 void Prototype01::selfKeyPressed(ofKeyEventArgs & args){
     if(args.key == ' '){
         bNext = true;
+        
+        UIMapBackground *back = (UIMapBackground*)background;
+        lights["SPOT"]->diffuse.hue = ofRandom(1.0);
+        lights["POINT LIGHT 1"]->diffuse.hue = ofRandom(1.0);
     }
 }
 
