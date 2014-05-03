@@ -34,7 +34,6 @@ void Prototype01::selfSetupGuis(){
     backgroundSet(new UIMapBackground());
     lightAdd("SPOT", OF_LIGHT_SPOT);
     materialAdd("FONT_MAT");
-    guiAdd(grid);
     guiAdd(terrainShader);
 }
 
@@ -274,12 +273,6 @@ void Prototype01::selfDraw(){
         terrain.drawWireframe();
         terrainShader.end();
     }
-    ofPopMatrix();
-    
-    ofPushMatrix();
-    ofTranslate(0,0,-50);
-    ofRotate(90, 1, 0, 0);
-    grid.draw();
     ofPopMatrix();
     
     ofPushMatrix();

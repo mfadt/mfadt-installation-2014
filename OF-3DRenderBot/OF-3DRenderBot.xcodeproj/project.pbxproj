@@ -20,9 +20,6 @@
 		2d1b256a63780bb017becd1a57da62a3 /* Recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644e48902b62fe6144a2bf9fb149e169 /* Recorder.cpp */; };
 		341db29ff1d926957e046f48a7a4cf25 /* SystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5cf537034ea91bb69884bf12f5c3159b /* SystemTextbox.mm */; };
 		3D3AA1F1191460AF000B1D57 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AA1EF191460AF000B1D57 /* Triangle.cpp */; };
-		3DD5C152191274FA00A4383A /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C13C191274FA00A4383A /* Grid.cpp */; };
-		3DD5C153191274FA00A4383A /* UI2DGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C140191274FA00A4383A /* UI2DGrid.cpp */; };
-		3DD5C154191274FA00A4383A /* UI3DGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C142191274FA00A4383A /* UI3DGrid.cpp */; };
 		3DD5C155191274FA00A4383A /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C145191274FA00A4383A /* Boid.cpp */; };
 		3DD5C156191274FA00A4383A /* Flock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C148191274FA00A4383A /* Flock.cpp */; };
 		3DD5C157191274FA00A4383A /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C14A191274FA00A4383A /* Particle.cpp */; };
@@ -225,14 +222,6 @@
 		38ebd5650a3bf5a499b07525be5fdbc6 /* ofxUISuperCanvas.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUISuperCanvas.cpp; path = ../../../addons/ofxUI/src/ofxUISuperCanvas.cpp; sourceTree = SOURCE_ROOT; };
 		3D3AA1EF191460AF000B1D57 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
 		3D3AA1F0191460AF000B1D57 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
-		3DD5C13C191274FA00A4383A /* Grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
-		3DD5C13D191274FA00A4383A /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
-		3DD5C13E191274FA00A4383A /* GridBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridBox.h; sourceTree = "<group>"; };
-		3DD5C13F191274FA00A4383A /* GridCross.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCross.h; sourceTree = "<group>"; };
-		3DD5C140191274FA00A4383A /* UI2DGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UI2DGrid.cpp; sourceTree = "<group>"; };
-		3DD5C141191274FA00A4383A /* UI2DGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI2DGrid.h; sourceTree = "<group>"; };
-		3DD5C142191274FA00A4383A /* UI3DGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UI3DGrid.cpp; sourceTree = "<group>"; };
-		3DD5C143191274FA00A4383A /* UI3DGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI3DGrid.h; sourceTree = "<group>"; };
 		3DD5C145191274FA00A4383A /* Boid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid.cpp; sourceTree = "<group>"; };
 		3DD5C146191274FA00A4383A /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boid.h; sourceTree = "<group>"; };
 		3DD5C147191274FA00A4383A /* Extruder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extruder.h; sourceTree = "<group>"; };
@@ -632,22 +621,6 @@
 			name = openssl;
 			sourceTree = "<group>";
 		};
-		3DD5C13B191274FA00A4383A /* grids */ = {
-			isa = PBXGroup;
-			children = (
-				3DD5C13C191274FA00A4383A /* Grid.cpp */,
-				3DD5C13D191274FA00A4383A /* Grid.h */,
-				3DD5C13E191274FA00A4383A /* GridBox.h */,
-				3DD5C13F191274FA00A4383A /* GridCross.h */,
-				3DD5C140191274FA00A4383A /* UI2DGrid.cpp */,
-				3DD5C141191274FA00A4383A /* UI2DGrid.h */,
-				3DD5C142191274FA00A4383A /* UI3DGrid.cpp */,
-				3DD5C143191274FA00A4383A /* UI3DGrid.h */,
-			);
-			name = grids;
-			path = ../../../addons/ofxUIProject/extra/grids;
-			sourceTree = "<group>";
-		};
 		3DD5C144191274FA00A4383A /* physics */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,7 +670,6 @@
 		534d7afab9219e3e87cb95eb92f126c2 /* ofxUIProject */ = {
 			isa = PBXGroup;
 			children = (
-				3DD5C13B191274FA00A4383A /* grids */,
 				3DD5C144191274FA00A4383A /* physics */,
 				e7697fe6368558ac94fbe91fd2ea9d1a /* src */,
 			);
@@ -1388,7 +1360,6 @@
 				7252706da14c1be63950adda6d4d0967 /* ofxUIFPS.cpp in Sources */,
 				22030cbdcc25d815e7ed6757c2507f08 /* ofxUIFPSSlider.cpp in Sources */,
 				3d4ea8e172d3e4a30fefa969797f0789 /* ofxUIImage.cpp in Sources */,
-				3DD5C153191274FA00A4383A /* UI2DGrid.cpp in Sources */,
 				7f2cd93f681f3c1547b3bf2cda37f2c3 /* ofxUIImageButton.cpp in Sources */,
 				fbd0cd0afe3849c14e829caf7e0e3be7 /* ofxUIImageSampler.cpp in Sources */,
 				26874b150c8535aea0f24c8cd56cf117 /* ofxUIImageSlider.cpp in Sources */,
@@ -1419,7 +1390,6 @@
 				04c82720b149ce576b8cbb06ac6d40d2 /* ofxUIToggle.cpp in Sources */,
 				e3a1109f67d711d6c256031e9b907021 /* ofxUIToggleMatrix.cpp in Sources */,
 				60012c723b05938a3d38833536981664 /* ofxUIValuePlotter.cpp in Sources */,
-				3DD5C154191274FA00A4383A /* UI3DGrid.cpp in Sources */,
 				ae281bebf3a00f1fc37f3da0ac10fa4d /* ofxUIWaveform.cpp in Sources */,
 				82845e1f8c90e1f5a99d98683a1ff0c2 /* ofxUIWidget.cpp in Sources */,
 				3DD5C156191274FA00A4383A /* Flock.cpp in Sources */,
@@ -1452,7 +1422,6 @@
 				b2c03436e3b61f5881013b24d6eb085d /* UI2DProject.cpp in Sources */,
 				5d7edf80840f68b1bbbbf193239de93a /* UI3DProject.cpp in Sources */,
 				63b57ac5bf4ef088491e0317dbb2ecaa /* ofxXmlSettings.cpp in Sources */,
-				3DD5C152191274FA00A4383A /* Grid.cpp in Sources */,
 				933a2227713c720ceff80fd967d0a8ee /* tinyxml.cpp in Sources */,
 				3DD5C158191274FA00A4383A /* Spring.cpp in Sources */,
 				9d44dc88ef9e7991b4a09951e2e4769f /* tinyxmlerror.cpp in Sources */,

@@ -8,7 +8,6 @@
 #pragma once
 
 #include "UI3DProject.h"
-#include "UI3DGrid.h"
 #include "UIShader.h"
 
 #include "ofxFTGL.h"
@@ -59,10 +58,6 @@ public:
     
 protected:
     ofxLibwebsockets::Client client;
-  
-    //  3D Elements
-    //
-    UI3DGrid        grid;
     
     ofxFTGLFont     font;
     float           fontNameSize, fontNameDeep, fontNameAlpha;
