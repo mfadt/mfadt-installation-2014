@@ -16,6 +16,11 @@ void Prototype01::selfSetup(){
     
     terrainShader.load(getDataPath()+"shaders/terrain");
     
+    sphEnvShader.load(getDataPath()+"shaders/sem");
+    ofDisableArbTex();
+    sphEnvTexture.loadImage(getDataPath()+"materials/06.jpg");
+    ofEnableArbTex();
+    
     ofDirectory dir(getDataPath()+"objs/");
     int nDir = dir.listDir();
     for(int i = 0; i < nDir; i++){
@@ -35,6 +40,7 @@ void Prototype01::selfSetupGuis(){
     lightAdd("SPOT", OF_LIGHT_SPOT);
     materialAdd("FONT_MAT");
     guiAdd(terrainShader);
+    guiAdd(sphEnvShader);
 }
 
 void Prototype01::selfGuiEvent(ofxUIEventArgs &e){
@@ -280,16 +286,31 @@ void Prototype01::selfDraw(){
     
     ofPushMatrix();
     ofDisableArbTex();
-    meshDimTexture.getTextureReference().bind();
+    
+    if(sphEnvShader.bEnable){
+        sphEnvShader.begin();
+        sphEnvShader.getShader().setUniformTexture("tMatCap", sphEnvTexture, 1);
+    } else {
+        meshDimTexture.getTextureReference().bind();
+    }
+
     glBegin(GL_TRIANGLES);
     for (int i = 0; i < triangles.size(); i++) {
         triangles[i].draw();
     }
     glEnd();
-    meshDimTexture.getTextureReference().unbind();
+    
+    if(sphEnvShader.bEnable){
+        sphEnvShader.end();
+    } else {
+        meshDimTexture.getTextureReference().unbind();
+    }
     ofEnableArbTex();
 
     if(bDebug){
+        
+        
+
         glBegin(GL_LINES);
         ofPushStyle();
         ofSetColor(255, 0, 0);
@@ -301,6 +322,8 @@ void Prototype01::selfDraw(){
         }
         ofPopStyle();
         glEnd();
+        
+        
         
         glBegin(GL_LINES);
         ofPushStyle();

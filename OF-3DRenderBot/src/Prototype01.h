@@ -80,6 +80,9 @@ protected:
     int                 nFaceCounter;
     int                 nFaceForFrame;
     
+    UIShader        sphEnvShader;
+    ofImage         sphEnvTexture;
+    
     void            terrainMake();
     UIShader        terrainShader;
     ofVboMesh       terrain;
