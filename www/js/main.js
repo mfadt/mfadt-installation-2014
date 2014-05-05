@@ -22,9 +22,8 @@ $(document).ready( function() {
   function createContent(data) {
 
     data = sortByKey(data, 'project');
-    for (var i = 0; i < data.length; i++){
+    for (var i = 0; i < data.length; i++) {
       dataForSearch.push( data[i].project);
-      dataForSearch.push( data[i].people);
 
       var p = document.createElement('div');
       p.classList.add('project');
@@ -33,6 +32,11 @@ $(document).ready( function() {
       p.setAttribute('data-people', data[i].people);
       p.setAttribute('data-slug', data[i].slug);
       $('#project-list').append( p );
+    }
+
+    data = sortByKey(data, 'people');
+    for (var i = 0; i < data.length; i++) {
+      dataForSearch.push( data[i].people);
 
       var n = document.createElement('div');
       n.classList.add('person');
@@ -40,7 +44,7 @@ $(document).ready( function() {
       n.setAttribute('data-project', data[i].project);
       n.setAttribute('data-people', data[i].people);
       n.setAttribute('data-slug', data[i].slug);
-      $('#people-list').append( n );      
+      $('#people-list').append( n );
 
     }
   }
@@ -83,6 +87,20 @@ $(document).ready( function() {
     //send socket info from val
   });
 
+  //Search
+  $('#search-input').autocomplete({
+    minLength: 2,
+    source: function(request, response) {
+      var results = $.ui.autocomplete.filter(dataForSearch, request.term);
+      response(results.slice(0, 3));
+    }
+  });
+
+  $('#search-input').blur(function() {
+    console.log( $('#search-input').val() );
+
+    //send socket info from val
+  });
 
   /**************************************************************************************/
   /**********************************SWIPE/DRAG EVENTS***********************************/
@@ -93,7 +111,6 @@ $(document).ready( function() {
     dragBlockHorizontal: true,
   };
   var hammertimeX = new Hammer(document, optionsX);
-
 
   hammertimeX.on("swiperight", function(event) {
     event.gesture.preventDefault();
