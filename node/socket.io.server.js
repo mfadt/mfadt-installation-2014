@@ -29,10 +29,8 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on('load_model', function (data) {
-		console.log(data);
 
 		var msg = 'load_model,' + data.slug + ',' + data.people;
-		console.log(msg);
 		if (OF) OF.send(msg);
 	});
 });
@@ -49,7 +47,7 @@ wss.on('connection', function(ws) {
         //console.log('received: %s', msg);
         // ws.send(msg + "\n");
 
-        if (OF) OF.send(msg);
+        // if (OF) OF.send(msg);
         
         var parts = msg.split(",");
         var event = parts[0];

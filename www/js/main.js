@@ -1,7 +1,10 @@
 $(document).ready( function() {
 
   var state = 0; // -1 is projects, 0 is normal, 1 is people
+  var bIsSearch = false;
 
+
+  var dataForSearch = [];
 
   //Initialize socket and get data
 
@@ -17,28 +20,28 @@ $(document).ready( function() {
   //Create content from data on page
 
   function createContent(data) {
-    // console.log(data);
 
     data = sortByKey(data, 'project');
     for (var i = 0; i < data.length; i++){
+      dataForSearch.push( data[i].project);
+      dataForSearch.push( data[i].people);
+
       var p = document.createElement('div');
       p.classList.add('project');
-      p.innerHTML = data[i].project;
+      p.innerHTML = '<h3>' + data[i].project + '</h3><h4>' + data[i].people + '</h4>';
       p.setAttribute('data-project', data[i].project);
       p.setAttribute('data-people', data[i].people);
       p.setAttribute('data-slug', data[i].slug);
       $('#project-list').append( p );
-    }
 
-    data = sortByKey(data, 'people')
-    for (var i = 0; i < data.length; i++){
-      var p = document.createElement('div');
-      p.classList.add('person');
-      p.innerHTML = data[i].people;
-      p.setAttribute('data-project', data[i].project);
-      p.setAttribute('data-people', data[i].people);
-      p.setAttribute('data-slug', data[i].slug);
-      $('#people-list').append( p );
+      var n = document.createElement('div');
+      n.classList.add('person');
+      n.innerHTML = '<h3>' + data[i].people + '</h3><h4>' + data[i].project + '</h4>';
+      n.setAttribute('data-project', data[i].project);
+      n.setAttribute('data-people', data[i].people);
+      n.setAttribute('data-slug', data[i].slug);
+      $('#people-list').append( n );      
+
     }
   }
 
@@ -64,29 +67,39 @@ $(document).ready( function() {
     socket.emit('load_model', data);
   });
 
-  $('something').click(function() {
 
-  })
+  //Search
+  $('#search-input').autocomplete({
+    minLength: 2,
+    source: function(request, response) {
+      var results = $.ui.autocomplete.filter(dataForSearch, request.term);
+      response(results.slice(0, 3));
+    }
+  });
 
+  $('#search-input').blur(function() {
+    console.log( $('#search-input').val() );
+
+    //send socket info from val
+  });
 
 
   /**************************************************************************************/
   /**********************************SWIPE/DRAG EVENTS***********************************/
   /**************************************************************************************/
 
-  var options = {
+  var optionsX = {
     dragLockToAxis: true,
     dragBlockHorizontal: true,
-    preventDefault: false
   };
-  var hammertime = new Hammer(document, options);
+  var hammertimeX = new Hammer(document, optionsX);
 
-  hammertime.on("touch", function(event) {
-    // alert(event);
-  });
 
-  hammertime.on("swiperight", function(event) {
+  hammertimeX.on("swiperight", function(event) {
+    event.gesture.preventDefault();
 
+    if (!bIsSearch) {
+      $('#search-input').blur();
       if (state == -1) {
         //do nothing
       }
@@ -102,13 +115,15 @@ $(document).ready( function() {
         $('#people-list').removeClass('people-visible').addClass('people-hidden');
         state = 0;
       }
-
-
       console.log('swiperight');
+    }
   });
 
-  hammertime.on("swipeleft", function(event) {
+  hammertimeX.on("swipeleft", function(event) {
+    event.gesture.preventDefault();
 
+    if (!bIsSearch) {
+      $('#search-input').blur();
       if (state == -1) {
         $('#content').scrollTop( 0 );
         $('header').removeClass('header-left').addClass('header-visible');
@@ -123,25 +138,36 @@ $(document).ready( function() {
       else if (state == 1) {
         //do nothing
       }
-
       console.log('swipeleft');
+    }
   });
 
-  hammertime.on("swipedown", function(event) {
+  var optionsY = {
+    dragLockToAxis: true,
+  };
+  var hammertimeY = new Hammer(document, optionsY);
 
+  hammertimeY.on("swipedown", function(event) {
+    
+    if ( event.gesture.center.clientY < 300 && state == 0) {
       $('#search').removeClass('search-hidden').addClass('search-visible');
-
+      bIsSearch = true;
+      $('#search-input').focus();
       console.log('swipedown');
+    }
   });
 
-  hammertime.on("swipeup", function(event) {
-
+  hammertimeY.on("swipeup", function(event) {
       $('#search').removeClass('search-visible').addClass('search-hidden');
-
-      console.log('swipedown');
+      bIsSearch = false;
+      $('#search-input').blur().val('');
+      console.log('swipeup');
   });
 
-
+  // $('#project-list').scroll( function(event) {
+  //   event.preventDefault();
+  //   console.log('scroll');
+  // });
 
   /**************************************************************************************/
   /************************************** HELPERS ***************************************/
