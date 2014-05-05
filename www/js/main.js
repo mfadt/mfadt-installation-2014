@@ -17,31 +17,57 @@ $(document).ready( function() {
   //Create content from data on page
 
   function createContent(data) {
-    console.log(data);
+    // console.log(data);
 
-    for (var i = 0; i < data['projects'].length; i++){
+    data = sortByKey(data, 'project');
+    for (var i = 0; i < data.length; i++){
       var p = document.createElement('div');
       p.classList.add('project');
-      p.innerHTML = data['projects'][i];
+      p.innerHTML = data[i].project;
+      p.setAttribute('data-project', data[i].project);
+      p.setAttribute('data-people', data[i].people);
+      p.setAttribute('data-slug', data[i].slug);
       $('#project-list').append( p );
     }
 
-    for (var i = 0; i < data['people'].length; i++){
+    data = sortByKey(data, 'people')
+    for (var i = 0; i < data.length; i++){
       var p = document.createElement('div');
       p.classList.add('person');
-      p.innerHTML = data['people'][i];
+      p.innerHTML = data[i].people;
+      p.setAttribute('data-project', data[i].project);
+      p.setAttribute('data-people', data[i].people);
+      p.setAttribute('data-slug', data[i].slug);
       $('#people-list').append( p );
     }
   }
 
   //Send data to server if project/person is selected.
-  $('.project').on('click', function(event) {
-    alert('hi');
+
+  $('body').on('touch', '.project', function(){
+    var data = {
+      project: $(this).attr('data-project'), 
+      people: $(this).attr('data-people'),
+      slug: $(this).attr('data-slug')
+    };
+    
+    socket.emit('load_model', data);
   });
 
-  $('.project').click( function(evt){
-    console.log('hi');
+  $('body').on('touch', '.person', function(){
+    var data = {
+      project: $(this).attr('data-project'), 
+      people: $(this).attr('data-people'),
+      slug: $(this).attr('data-slug')
+    };
+
+    socket.emit('load_model', data);
   });
+
+  $('something').click(function() {
+
+  })
+
 
 
   /**************************************************************************************/
@@ -51,9 +77,13 @@ $(document).ready( function() {
   var options = {
     dragLockToAxis: true,
     dragBlockHorizontal: true,
-    preventDefault: true
+    preventDefault: false
   };
   var hammertime = new Hammer(document, options);
+
+  hammertime.on("touch", function(event) {
+    // alert(event);
+  });
 
   hammertime.on("swiperight", function(event) {
 
@@ -111,9 +141,25 @@ $(document).ready( function() {
       console.log('swipedown');
   });
 
+
+
   /**************************************************************************************/
-  /**************************************************************************************/
+  /************************************** HELPERS ***************************************/
   /**************************************************************************************/
 
+  function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+      var x = a[key];
+      var y = b[key];
+
+      if (typeof x == "string")
+      {
+          x = x.toLowerCase(); 
+          y = y.toLowerCase();
+      }
+
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+  }
 
 });
