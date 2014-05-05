@@ -11,9 +11,11 @@
     "mesh",
     "websocket"
   ],
-  "author": "Matt Felsen",
+  "author": "Matt Felsen, Patricio González-Vivo, Owen Herterich",
   "license": "ISC",
   "dependencies": {
-    "ws": "^0.4.31"
+    "socket.io": "^0.9.16",
+    "express": "^4.1.1",
+    "serve-index": "^1.0.2"
   }
 }
