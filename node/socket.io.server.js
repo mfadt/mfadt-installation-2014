@@ -15,10 +15,13 @@ app.use(express.static(WWW_ROOT));
 
 io.sockets.on('connection', function (socket) {
 
+	console.log('new connection: ' + socket.id);
+
 	// load up json file and send it to new clients
 	fs.readFile(WWW_ROOT + '/js/data.json', 'utf8', function (err, data) {
 		if (err) console.log('Error reading data.json:', err);
 		console.log(data);
+		data = JSON.parse(data);
 		socket.emit('init', data);
 	});
 
