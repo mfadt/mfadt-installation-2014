@@ -1,155 +1,675 @@
 {
-    "projects": [
-        "5pong - the battle machine",
-        "Amalgam",
-        "App(les)",
-        "Beyond Sight",
-        "Blackbody Radiation",
-        "Bodegga",
-        "codeMath",
-        "Constitution Project",
-        "Copter Wish",
-        "Crown Heights Mic",
-        "DATA RUSH",
-        "Datumz &amp; Deities",
-        "Designedin",
-        "DIY DMT",
-        "Dumb Songs",
-        "Emotichat",
-        "Face",
-        "Flocking",
-        "Flow",
-        "Formation",
-        "Fútbol Forever",
-        "Gone",
-        "Hands On",
-        "Hi Hi",
-        "HIDE",
-        "Hitchupp",
-        "HugMatch",
-        "Infomaze",
-        "Interactive Book",
-        "Lettergraphy",
-        "Little J",
-        "Lost Landmarks",
-        "Mixed Reality Living Spaces",
-        "Mon Magasin",
-        "Moon Moon",
-        "Motus",
-        "Pairity",
-        "Past &amp; Present",
-        "Peaches",
-        "Perishable Bodies",
-        "ProcrastiMate",
-        "Puddle",
-        "Reflection",
-        "Relics",
-        "Replica",
-        "Rifftide",
-        "SeduChair",
-        "Shape of Experience",
-        "Sky line",
-        "Skylines",
-        "Sonder, A Story",
-        "Spacetime Explorer",
-        "Starry City",
-        "STEAMPunks",
-        "Syria: An Interactive Documentary",
-        "Tacticon",
-        "Tannaz Project",
-        "Technology Undressed",
-        "The Diaspora",
-        "The Nns",
-        "The Psychic",
-        "The Qualified Life",
-        "Touch the Sound",
-        "Trails",
-        "Transcendence",
-        "Two or Three Things I Know About Electronic Waste",
-        "WatchThis",
-        "We Sell No Labels",
-        "Weebits Toys",
-        "Wheely",
-        "Yang Feng Project",
-        "Yuanjin Zhao Project",
-        "“You, them and the space in between”"
-    ],
-    "people": [
-        "Adiel Fernandez",
-        "Aero Wang",
-        "Agustina Jacobi",
-        "Albert Kim",
-        "Alex Samuel",
-        "Anantapa Thongtawach",
-        "Aneta Genova",
-        "Anthony Driscoll",
-        "Apon Palanuwech",
-        "Bernardo Schorr",
-        "Bobby Fata",
-        "Carla Marin",
-        "Carrol Tingjian Shen",
-        "Chloe Koo",
-        "Clarisa Diaz",
-        "Decho Pitukcharoen",
-        "Fei Liu",
-        "Francesca Maria Castelli",
-        "Gustavo Faria",
-        "Haijing Liu",
-        "Huy Nguyen",
-        "J. Matthew Griffis (\"Matt\")",
-        "Jackie Neon",
-        "Jason Lalor",
-        "Jean Zhao",
-        "Jeannette Subero",
-        "Jennifer Presto",
-        "Jia Xu",
-        "Joe Moore",
-        "Jomkwan Narkvichetr",
-        "Joori Lee",
-        "Jorge Proano",
-        "Justin Charles",
-        "Kamilla Kielbowska",
-        "Keion Anthony Marefat",
-        "Kristen Kersh",
-        "Li Chung Chang (George)",
-        "Li Wen Chang (Peter)",
-        "Matt Felsen",
-        "Mauricio Sanchez Duque",
-        "Maxine Jungyeon Kim",
-        "Mehdi Salehi",
-        "Mennie Hsiu Ying Shen",
-        "Michael Kahane",
-        "Min Sung Kwak",
-        "Mirte Becker",
-        "Morgan Fiebig",
-        "Napangsiri Wanpen",
-        "Nori Yuki",
-        "Or Leviteh",
-        "Oriol Bella",
-        "Owen Herterich",
-        "Patricio Gonzalez Vivo",
-        "Qiuyi Wu",
-        "Quincy Bock",
-        "Ricardo Vega Mora",
-        "Ritika Bhagya",
-        "Salome Asega",
-        "Samir Naimi",
-        "Sarah Wever",
-        "Seungkyun Lee",
-        "Shahrouz Varshabi",
-        "Soo Koh",
-        "Sophie Kaars Sijpesteijn",
-        "Susse Sønderby Jensen",
-        "Tannaz Ebadollahi",
-        "Tiam Taheri",
-        "Veronica Black",
-        "Viki Hristova",
-        "Wenting Zhang",
-        "WenWen Li",
-        "Yang Feng",
-        "Ye Han",
-        "Yi Ning Huang",
-        "Yu-Yi Chen",
-        "Zixin Wang"
-    ]
+	"people": [
+		{
+			"name": "Adiel Fernandez",
+			"slug": "adiel-fernandez"
+		},
+		{
+			"name": "Aero Wang",
+			"slug": "aero-wang"
+		},
+		{
+			"name": "Agustina Jacobi",
+			"slug": "agustina-jacobi"
+		},
+		{
+			"name": "Albert Kim",
+			"slug": "albert-kim"
+		},
+		{
+			"name": "Alex Samuel",
+			"slug": "alex-samuel"
+		},
+		{
+			"name": "Anantapa Thongtawach",
+			"slug": "anantapa-thongtawach"
+		},
+		{
+			"name": "Aneta Genova",
+			"slug": "aneta-genova"
+		},
+		{
+			"name": "Anthony Driscoll",
+			"slug": "anthony-driscoll"
+		},
+		{
+			"name": "Apon Palanuwech",
+			"slug": "apon-palanuwech"
+		},
+		{
+			"name": "Bernardo Schorr",
+			"slug": "bernardo-schorr"
+		},
+		{
+			"name": "Bobby Fata",
+			"slug": "bobby-fata"
+		},
+		{
+			"name": "Carla Marin",
+			"slug": "carla-marin"
+		},
+		{
+			"name": "Carrol Tingjian Shen",
+			"slug": "carrol-tingjian-shen"
+		},
+		{
+			"name": "Chloe Koo",
+			"slug": "chloe-koo"
+		},
+		{
+			"name": "Clarisa Diaz",
+			"slug": "clarisa-diaz"
+		},
+		{
+			"name": "Decho Pitukcharoen",
+			"slug": "decho-pitukcharoen"
+		},
+		{
+			"name": "Fei Liu",
+			"slug": "fei-liu"
+		},
+		{
+			"name": "Francesca Maria Castelli",
+			"slug": "francesca-maria-castelli"
+		},
+		{
+			"name": "Gustavo Faria",
+			"slug": "gustavo-faria"
+		},
+		{
+			"name": "Haijing Liu",
+			"slug": "haijing-liu"
+		},
+		{
+			"name": "Huy Nguyen",
+			"slug": "huy-nguyen"
+		},
+		{
+			"name": "J. Matthew Griffis (\"Matt\")",
+			"slug": "j-matthew-griffis-matt"
+		},
+		{
+			"name": "Jackie Neon",
+			"slug": "jackie-neon"
+		},
+		{
+			"name": "Jason Lalor",
+			"slug": "jason-lalor"
+		},
+		{
+			"name": "Jean Zhao",
+			"slug": "jean-zhao"
+		},
+		{
+			"name": "Jeannette Subero",
+			"slug": "jeannette-subero"
+		},
+		{
+			"name": "Jennifer Presto",
+			"slug": "jennifer-presto"
+		},
+		{
+			"name": "Jia Xu",
+			"slug": "jia-xu"
+		},
+		{
+			"name": "Joe Moore",
+			"slug": "joe-moore"
+		},
+		{
+			"name": "Jomkwan Narkvichetr",
+			"slug": "jomkwan-narkvichetr"
+		},
+		{
+			"name": "Joori Lee",
+			"slug": "joori-lee"
+		},
+		{
+			"name": "Jorge Proano",
+			"slug": "jorge-proano"
+		},
+		{
+			"name": "Justin Charles",
+			"slug": "justin-charles"
+		},
+		{
+			"name": "Kamilla Kielbowska",
+			"slug": "kamilla-kielbowska"
+		},
+		{
+			"name": "Keion Anthony Marefat",
+			"slug": "keion-anthony-marefat"
+		},
+		{
+			"name": "Kristen Kersh",
+			"slug": "kristen-kersh"
+		},
+		{
+			"name": "Li Chung Chang (George)",
+			"slug": "li-chung-chang-george"
+		},
+		{
+			"name": "Li Wen Chang (Peter)",
+			"slug": "li-wen-chang-peter"
+		},
+		{
+			"name": "Matt Felsen",
+			"slug": "matt-felsen"
+		},
+		{
+			"name": "Mauricio Sanchez Duque",
+			"slug": "mauricio-sanchez-duque"
+		},
+		{
+			"name": "Maxine Jungyeon Kim",
+			"slug": "maxine-jungyeon-kim"
+		},
+		{
+			"name": "Mehdi Salehi",
+			"slug": "mehdi-salehi"
+		},
+		{
+			"name": "Mennie Hsiu Ying Shen",
+			"slug": "mennie-hsiu-ying-shen"
+		},
+		{
+			"name": "Michael Kahane",
+			"slug": "michael-kahane"
+		},
+		{
+			"name": "Min Sung Kwak",
+			"slug": "min-sung-kwak"
+		},
+		{
+			"name": "Mirte Becker",
+			"slug": "mirte-becker"
+		},
+		{
+			"name": "Morgan Fiebig",
+			"slug": "morgan-fiebig"
+		},
+		{
+			"name": "Napangsiri Wanpen",
+			"slug": "napangsiri-wanpen"
+		},
+		{
+			"name": "Nori Yuki",
+			"slug": "nori-yuki"
+		},
+		{
+			"name": "Or Leviteh",
+			"slug": "or-leviteh"
+		},
+		{
+			"name": "Oriol Bella",
+			"slug": "oriol-bella"
+		},
+		{
+			"name": "Owen Herterich",
+			"slug": "owen-herterich"
+		},
+		{
+			"name": "Patricio Gonzalez Vivo",
+			"slug": "patricio-gonzalez-vivo"
+		},
+		{
+			"name": "Qiuyi Wu",
+			"slug": "qiuyi-wu"
+		},
+		{
+			"name": "Quincy Bock",
+			"slug": "quincy-bock"
+		},
+		{
+			"name": "Ricardo Vega Mora",
+			"slug": "ricardo-vega-mora"
+		},
+		{
+			"name": "Ritika Bhagya",
+			"slug": "ritika-bhagya"
+		},
+		{
+			"name": "Salome Asega",
+			"slug": "salome-asega"
+		},
+		{
+			"name": "Samir Naimi",
+			"slug": "samir-naimi"
+		},
+		{
+			"name": "Sarah Wever",
+			"slug": "sarah-wever"
+		},
+		{
+			"name": "Seungkyun Lee",
+			"slug": "seungkyun-lee"
+		},
+		{
+			"name": "Shahrouz Varshabi",
+			"slug": "shahrouz-varshabi"
+		},
+		{
+			"name": "Soo Koh",
+			"slug": "soo-koh"
+		},
+		{
+			"name": "Sophie Kaars Sijpesteijn",
+			"slug": "sophie-kaars-sijpesteijn"
+		},
+		{
+			"name": "Susse Sønderby Jensen",
+			"slug": "susse-sonderby-jensen"
+		},
+		{
+			"name": "Tannaz Ebadollahi",
+			"slug": "tannaz-ebadollahi"
+		},
+		{
+			"name": "Tiam Taheri",
+			"slug": "tiam-taheri"
+		},
+		{
+			"name": "Veronica Black",
+			"slug": "veronica-black"
+		},
+		{
+			"name": "Viki Hristova",
+			"slug": "viki-hristova"
+		},
+		{
+			"name": "Wenting Zhang",
+			"slug": "wenting-zhang"
+		},
+		{
+			"name": "WenWen Li",
+			"slug": "wenwen-li"
+		},
+		{
+			"name": "Yang Feng",
+			"slug": "yang-feng"
+		},
+		{
+			"name": "Ye Han",
+			"slug": "ye-han"
+		},
+		{
+			"name": "Yi Ning Huang",
+			"slug": "yi-ning-huang"
+		},
+		{
+			"name": "Yu-Yi Chen",
+			"slug": "yu-yi-chen"
+		},
+		{
+			"name": "Zixin Wang",
+			"slug": "zixin-wang"
+		}
+	],
+	"projects": [
+		{
+			"name": "5pong - the battle machine",
+			"slug": "5pong",
+			"FIELD3": ""
+		},
+		{
+			"name": "Amalgam",
+			"slug": "amalgam",
+			"FIELD3": ""
+		},
+		{
+			"name": "App(les)",
+			"slug": "apples",
+			"FIELD3": ""
+		},
+		{
+			"name": "Beyond Sight",
+			"slug": "beyond-sight",
+			"FIELD3": ""
+		},
+		{
+			"name": "Blackbody Radiation",
+			"slug": "blackbody-radiation",
+			"FIELD3": ""
+		},
+		{
+			"name": "Bodegga",
+			"slug": "bodegga",
+			"FIELD3": ""
+		},
+		{
+			"name": "codeMath",
+			"slug": "codemath",
+			"FIELD3": ""
+		},
+		{
+			"name": "Constitution Project",
+			"slug": "constitution-project",
+			"FIELD3": ""
+		},
+		{
+			"name": "Copter Wish",
+			"slug": "copter-wish",
+			"FIELD3": ""
+		},
+		{
+			"name": "Crown Heights Mic",
+			"slug": "crown-heights-mic",
+			"FIELD3": ""
+		},
+		{
+			"name": "DATA RUSH",
+			"slug": "data-rush",
+			"FIELD3": ""
+		},
+		{
+			"name": "Datumz &amp; Deities",
+			"slug": "datumz-deities",
+			"FIELD3": ""
+		},
+		{
+			"name": "Designedin",
+			"slug": "designedin",
+			"FIELD3": ""
+		},
+		{
+			"name": "DIY DMT",
+			"slug": "diy-dmt",
+			"FIELD3": ""
+		},
+		{
+			"name": "Dumb Songs",
+			"slug": "dumb-songs",
+			"FIELD3": ""
+		},
+		{
+			"name": "Emotichat",
+			"slug": "emotichat",
+			"FIELD3": ""
+		},
+		{
+			"name": "Face",
+			"slug": "face",
+			"FIELD3": ""
+		},
+		{
+			"name": "Flocking",
+			"slug": "flocking",
+			"FIELD3": ""
+		},
+		{
+			"name": "Flow",
+			"slug": "flow",
+			"FIELD3": ""
+		},
+		{
+			"name": "Formation",
+			"slug": "formation",
+			"FIELD3": ""
+		},
+		{
+			"name": "Fútbol Forever",
+			"slug": "futbol-forever",
+			"FIELD3": ""
+		},
+		{
+			"name": "Gone",
+			"slug": "gone",
+			"FIELD3": ""
+		},
+		{
+			"name": "Hands On",
+			"slug": "hands-on",
+			"FIELD3": ""
+		},
+		{
+			"name": "Hi Hi",
+			"slug": "hi-hi",
+			"FIELD3": ""
+		},
+		{
+			"name": "HIDE",
+			"slug": "hide",
+			"FIELD3": ""
+		},
+		{
+			"name": "Hitchupp",
+			"slug": "hitchupp",
+			"FIELD3": ""
+		},
+		{
+			"name": "HugMatch",
+			"slug": "hugmatch",
+			"FIELD3": ""
+		},
+		{
+			"name": "Infomaze",
+			"slug": "infomaze",
+			"FIELD3": ""
+		},
+		{
+			"name": "Interactive Book",
+			"slug": "interactive-book",
+			"FIELD3": ""
+		},
+		{
+			"name": "Lettergraphy",
+			"slug": "lettergraphy",
+			"FIELD3": ""
+		},
+		{
+			"name": "Little J",
+			"slug": "little-j",
+			"FIELD3": ""
+		},
+		{
+			"name": "Lost Landmarks",
+			"slug": "lost-landmarks",
+			"FIELD3": ""
+		},
+		{
+			"name": "Mixed Reality Living Spaces",
+			"slug": "mixed-reality-living-spaces",
+			"FIELD3": ""
+		},
+		{
+			"name": "Mon Magasin",
+			"slug": "mon-magasin",
+			"FIELD3": ""
+		},
+		{
+			"name": "Moon Moon",
+			"slug": "moon-moon",
+			"FIELD3": ""
+		},
+		{
+			"name": "Motus",
+			"slug": "motus",
+			"FIELD3": ""
+		},
+		{
+			"name": "Pairity",
+			"slug": "pairity",
+			"FIELD3": ""
+		},
+		{
+			"name": "Past &amp; Present",
+			"slug": "past-present",
+			"FIELD3": ""
+		},
+		{
+			"name": "Peaches",
+			"slug": "peaches",
+			"FIELD3": ""
+		},
+		{
+			"name": "Perishable Bodies",
+			"slug": "perishable-bodies",
+			"FIELD3": ""
+		},
+		{
+			"name": "ProcrastiMate",
+			"slug": "procrastimate",
+			"FIELD3": ""
+		},
+		{
+			"name": "Puddle",
+			"slug": "puddle",
+			"FIELD3": ""
+		},
+		{
+			"name": "Reflection",
+			"slug": "reflection",
+			"FIELD3": ""
+		},
+		{
+			"name": "Relics",
+			"slug": "relics",
+			"FIELD3": ""
+		},
+		{
+			"name": "Replica",
+			"slug": "replica",
+			"FIELD3": ""
+		},
+		{
+			"name": "Rifftide",
+			"slug": "rifftide",
+			"FIELD3": ""
+		},
+		{
+			"name": "SeduChair",
+			"slug": "seduchair",
+			"FIELD3": ""
+		},
+		{
+			"name": "Shape of Experience",
+			"slug": "shape-of-experience",
+			"FIELD3": ""
+		},
+		{
+			"name": "Sky line",
+			"slug": "sky-line",
+			"FIELD3": ""
+		},
+		{
+			"name": "Skylines",
+			"slug": "skylines",
+			"FIELD3": ""
+		},
+		{
+			"name": "Sonder",
+			"slug": " A Story",
+			"FIELD3": "sonder"
+		},
+		{
+			"name": "Spacetime Explorer",
+			"slug": "spacetime-explorer",
+			"FIELD3": ""
+		},
+		{
+			"name": "Starry City",
+			"slug": "starry-city",
+			"FIELD3": ""
+		},
+		{
+			"name": "STEAMPunks",
+			"slug": "steampunks",
+			"FIELD3": ""
+		},
+		{
+			"name": "Syria: An Interactive Documentary",
+			"slug": "tbd-3",
+			"FIELD3": ""
+		},
+		{
+			"name": "Tacticon",
+			"slug": "tacticon",
+			"FIELD3": ""
+		},
+		{
+			"name": "Tannaz Project",
+			"slug": "untitled-8",
+			"FIELD3": ""
+		},
+		{
+			"name": "Technology Undressed",
+			"slug": "technology-undressed",
+			"FIELD3": ""
+		},
+		{
+			"name": "The Diaspora",
+			"slug": "the-diaspora",
+			"FIELD3": ""
+		},
+		{
+			"name": "The Nns",
+			"slug": "the-nns",
+			"FIELD3": ""
+		},
+		{
+			"name": "The Psychic",
+			"slug": "the-psychic",
+			"FIELD3": ""
+		},
+		{
+			"name": "The Qualified Life",
+			"slug": "qualified-life",
+			"FIELD3": ""
+		},
+		{
+			"name": "Touch the Sound",
+			"slug": "touch-the-sound",
+			"FIELD3": ""
+		},
+		{
+			"name": "Trails",
+			"slug": "trails",
+			"FIELD3": ""
+		},
+		{
+			"name": "Transcendence",
+			"slug": "transcendence",
+			"FIELD3": ""
+		},
+		{
+			"name": "Two or Three Things I Know About Electronic Waste",
+			"slug": "two-or-three-things-i-know-about-electronic-waste",
+			"FIELD3": ""
+		},
+		{
+			"name": "WatchThis",
+			"slug": "watchthis",
+			"FIELD3": ""
+		},
+		{
+			"name": "We Sell No Labels",
+			"slug": "we-sell-no-labels",
+			"FIELD3": ""
+		},
+		{
+			"name": "Weebits Toys",
+			"slug": "weebits-toys",
+			"FIELD3": ""
+		},
+		{
+			"name": "Wheely",
+			"slug": "wheely",
+			"FIELD3": ""
+		},
+		{
+			"name": "Yang Feng Project",
+			"slug": "untitled-18",
+			"FIELD3": ""
+		},
+		{
+			"name": "Yuanjin Zhao Project",
+			"slug": "mixmell",
+			"FIELD3": ""
+		},
+		{
+			"name": "“You",
+			"slug": " them and the space in between”",
+			"FIELD3": "you-them-and-the-space-in-between"
+		}
+	]
 }
