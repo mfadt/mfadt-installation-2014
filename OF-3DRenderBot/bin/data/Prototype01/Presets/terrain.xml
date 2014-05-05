@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>terrain</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>426.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>580.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>spikesPct</Name>
-    <Value>1.000000000</Value>
+    <Value>0.467980295</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>spikesFrq</Name>
-    <Value>0.118226603</Value>
+    <Value>0.684729040</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,15 +58,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>falloffDist</Name>
-    <Value>0.054187194</Value>
+    <Value>0.236453205</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>falloffExpo</Name>
-    <Value>0.354679793</Value>
+    <Value>0.399014771</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>falloffScl</Name>
-    <Value>0.600985229</Value>
+    <Value>0.724137902</Value>
 </Widget>

@@ -89,6 +89,8 @@ protected:
     int             terrainWidth,terrainHeight;
     float           terrainScale, terrainWireframeAlpha;
     
+    vector<string>  cmdBuffer;
+    
     //  Flocking
     //
     ofPoint globalOffset;

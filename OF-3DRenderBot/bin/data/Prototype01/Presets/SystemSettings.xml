@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1364.000000000</XPosition>
-    <YPosition>167.000000000</YPosition>
+    <XPosition>1428.000000000</XPosition>
+    <YPosition>391.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>Faces_for_Frame</Name>
-    <Value>1000</Value>
+    <Value>14</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,22 +23,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Rotation_Speed</Name>
-    <Value>1.000000000</Value>
+    <Value>0.802955687</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attraction</Name>
-    <Value>0.778325140</Value>
+    <Value>0.536945820</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attraction_radius</Name>
-    <Value>0.058768470</Value>
+    <Value>2.618226767</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>traction</Name>
-    <Value>0.093596056</Value>
+    <Value>0.147783250</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,30 +48,35 @@
 <Widget>
     <Kind>4</Kind>
     <Name>turbulence</Name>
-    <Value>0.019704433</Value>
+    <Value>0.049261082</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>neigbordhood</Name>
-    <Value>100.099998474</Value>
+    <Value>50.838916779</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>independence</Name>
-    <Value>0.108374387</Value>
+    <Value>0.083743840</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>terrain_width</Name>
-    <Value>3990</Value>
+    <Value>4039</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>terrain_height</Name>
-    <Value>3892</Value>
+    <Value>4138</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>terrain_scale</Name>
-    <Value>27.783250809</Value>
+    <Value>51.182266235</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>terrain_wireframe_alpha</Name>
+    <Value>0.201970443</Value>
 </Widget>

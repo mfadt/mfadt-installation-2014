@@ -11,14 +11,14 @@ void Prototype01::selfSetup(){
     ofEnableAlphaBlending();
     ofEnableSmoothing();
     
-    //client.connect("localhost", 8081);
-    //client.addListener(this);
+    client.connect("mattfelsen.local", 8081);
+    client.addListener(this);
     
     terrainShader.load(getDataPath()+"shaders/terrain");
     
     sphEnvShader.load(getDataPath()+"shaders/sem");
     ofDisableArbTex();
-    sphEnvTexture.loadImage(getDataPath()+"materials/06.jpg");
+    sphEnvTexture.loadImage(getDataPath()+"materials/05.jpg");
     ofEnableArbTex();
     
     ofDirectory dir(getDataPath()+"objs/");
@@ -143,6 +143,48 @@ void Prototype01::terrainMake(){
 }
 
 void Prototype01::selfUpdate(){
+    
+    while (cmdBuffer.size()>0) {
+        vector<string> values = ofSplitString(cmdBuffer[0], ",");
+        
+        if (values[0] == "flocking"){
+            flocking = ofToFloat(values[1]);
+        } else if (values[0] == "text"){
+            textName = values[1];
+        } else if (values[0] == "load_model"){
+            
+            cout << "Loading model " << values[1] << endl;
+            
+            meshLoader.enableTextures();
+            meshLoader.enableMaterials();
+            meshLoader.loadModel(getDataPath()+"objs/"+values[1]+"/TEXTURED_"+values[1]+".obj", true);
+            ofDisableArbTex();
+            ofLoadImage(meshTexture, getDataPath()+"objs/"+values[1]+"/color.png");
+            meshDimTexture.allocate(meshTexture.getWidth(), meshTexture.getHeight());
+            ofEnableArbTex();
+            meshTarget = meshLoader.getMesh(0);
+            meshOffset = meshLoader.getSceneCenter();
+            nFaceCounter = 0;
+            
+            textName = values[2];
+            
+        } else if (values[0] == "texture_alpha"){
+            meshTextureAlpha = ofToFloat(values[1]);
+        } else if (values[0] == "speed"){
+            speed = ofToFloat(values[1]);
+        } else if (values[0] == "speed"){
+            speed = ofToFloat(values[1]);
+        } else if (values[0] == "camera"){
+            //  Load camera like FAR, FRONT, RIGHT and UNDER
+            //  You can make more going to the pannel that say "EASYCAM" and typing new names
+            //  To transit between cameras position be sure to have the lerp in a low number.
+            //
+            camera->load(getDataPath()+"cameras/"+values[1]+".cam");
+        }
+        
+        cmdBuffer.erase(cmdBuffer.begin()+0);
+    }
+    
     
     if (bNext){
         textName = names[nCounter];
@@ -390,36 +432,8 @@ void Prototype01::onIdle( ofxLibwebsockets::Event& args ){
 //--------------------------------------------------------------
 void Prototype01::onMessage( ofxLibwebsockets::Event& args ){
     cout<<"got message "<<args.message<<endl;
-    vector<string> values = ofSplitString(args.message, " ");
-    if (values[0] == "flocking"){
-        flocking = ofToFloat(values[1]);
-    } else if (values[0] == "text"){
-        textName = values[1];
-    } else if (values[0] == "load_model"){
-        meshLoader.enableTextures();
-        meshLoader.enableMaterials();
-        meshLoader.loadModel(getDataPath()+"objs/"+values[1]+"/TEXTURED_"+values[1]+".obj", true);
-        ofDisableArbTex();
-        ofLoadImage(meshTexture, getDataPath()+"objs/"+values[1]+"/color.png");
-        meshDimTexture.allocate(meshTexture.getWidth(), meshTexture.getHeight());
-        ofEnableArbTex();
-        meshTarget = meshLoader.getMesh(0);
-        meshOffset = meshLoader.getSceneCenter();
-        nFaceCounter = 0;
-    } else if (values[0] == "texture_alpha"){
-        meshTextureAlpha = ofToFloat(values[1]);
-    } else if (values[0] == "speed"){
-        speed = ofToFloat(values[1]);
-    } else if (values[0] == "speed"){
-        speed = ofToFloat(values[1]);
-    } else if (values[0] == "camera"){
-        //  Load camera like FAR, FRONT, RIGHT and UNDER
-        //  You can make more going to the pannel that say "EASYCAM" and typing new names
-        //  To transit between cameras position be sure to have the lerp in a low number.
-        //
-        camera->load(getDataPath()+"cameras/"+values[1]+".cam");
-    }
-    
+    cmdBuffer.push_back(args.message);
+
     //  Etc etc
     //
     //  You get the picture here
