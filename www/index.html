@@ -1,52 +1,35 @@
 <html>
 	<head>
 		<title>Thesis Installation Projection Interactive OF Web Portrait Morphing Thing</title>
-
-		<style>
-			table {
-				width: 100%;
-				background: #eee;
-			}
-
-			td {
-				width: auto;
-			}
-		</style>
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700,400italic' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  		
+  		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script src="./js/hammer.min.js"></script>
 	</head>
 	<body>
-		<div class="main">
-		  <h2>Device Orientation</h2>
-		  <table>
-		    <tr>
-		      <td>Event Supported</td>
-		      <td id="doEvent"></td>
-		    </tr>
-		    <tr>
-		      <td>Tilt Left/Right [gamma]</td>
-		      <td id="doTiltLR"></td>
-		    </tr>
-		    <tr>
-		      <td>Tilt Front/Back [beta]</td>
-		      <td id="doTiltFB"></td>
-		    </tr>
-		    <tr>
-		      <td>Direction [alpha]</td>
-		      <td id="doDirection"></td>
-		    </tr>
-		    		    <tr>
-		      <td>X</td>
-		      <td id="accX"></td>
-		    </tr>
-		    <tr>
-		      <td>Y</td>
-		      <td id="accY"></td>
-		    </tr>
-		    <tr>
-		      <td>Z</td>
-		      <td id="accZ"></td>
-		    </tr>
-		   </table>
-		</div>
+		<section id="content">
+			<div id="search" class="search-hidden">
+				<input id="search-input" type="text">
+			</div>
+			<header>
+				<h4 id="instruction-search" class="instruction">Search</h4>
+				<img src="img/hero.png"/>
+				<h2 id="project-title">Projects</h2>
+				<h2 id="people-title">People</h2>
+				<h4 id="instruction-swipe" class="instruction">Swipe to begin </h4>
+			</header>
+			<div id="project-list" class="projects-hidden">
+			</div>
+			<div id="people-list" class="people-hidden">
+			</div>
+		</section>
+
 		<script src="./js/main.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
 	</body>
 </html>
