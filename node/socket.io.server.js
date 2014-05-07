@@ -47,7 +47,7 @@ wss.on('connection', function(ws) {
         //console.log('received: %s', msg);
         // ws.send(msg + "\n");
 
-        // if (OF) OF.send(msg);
+        if (OF) OF.send(msg);
         
         var parts = msg.split(",");
         var event = parts[0];

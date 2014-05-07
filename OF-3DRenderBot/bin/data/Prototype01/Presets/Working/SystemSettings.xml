@@ -3,7 +3,7 @@
     <Name>SystemSettings</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>176.000000000</YPosition>
+    <YPosition>154.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>Faces_for_Frame</Name>
-    <Value>68</Value>
+    <Value>167</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,22 +23,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Rotation_Speed</Name>
-    <Value>0.802955687</Value>
+    <Value>0.714285731</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attraction</Name>
-    <Value>0.310344815</Value>
+    <Value>0.172413796</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attraction_radius</Name>
-    <Value>0.600541890</Value>
+    <Value>0.649753690</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>traction</Name>
-    <Value>0.147783250</Value>
+    <Value>0.123152710</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,12 +48,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>turbulence</Name>
-    <Value>0.290640384</Value>
+    <Value>0.059113301</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>neigbordhood</Name>
-    <Value>53.794582367</Value>
+    <Value>39.016258240</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

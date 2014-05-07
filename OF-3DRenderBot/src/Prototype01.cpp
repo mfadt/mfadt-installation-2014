@@ -11,7 +11,7 @@ void Prototype01::selfSetup(){
     ofEnableAlphaBlending();
     ofEnableSmoothing();
     
-    client.connect("mattfelsen.local", 8081);
+    client.connect("localhost", 8081);
     client.addListener(this);
     
     terrainShader.load(getDataPath()+"shaders/terrain");
@@ -157,7 +157,7 @@ void Prototype01::selfUpdate(){
             
             meshLoader.enableTextures();
             meshLoader.enableMaterials();
-            meshLoader.loadModel(getDataPath()+"objs/"+values[1]+"/TEXTURED_"+values[1]+".obj", true);
+            meshLoader.loadModel(getDataPath()+"objs/"+values[1]+"/model.obj", true);
             ofDisableArbTex();
             ofLoadImage(meshTexture, getDataPath()+"objs/"+values[1]+"/color.png");
             meshDimTexture.allocate(meshTexture.getWidth(), meshTexture.getHeight());
@@ -190,7 +190,7 @@ void Prototype01::selfUpdate(){
         textName = names[nCounter];
         meshLoader.enableTextures();
         meshLoader.enableMaterials();
-        meshLoader.loadModel(getDataPath()+"objs/"+names[nCounter]+"/TEXTURED_"+names[nCounter]+".obj", true);
+        meshLoader.loadModel(getDataPath()+"objs/"+names[nCounter]+"/model.obj", true);
         ofDisableArbTex();
         ofLoadImage(meshTexture, getDataPath()+"objs/"+names[nCounter]+"/color.png");
         meshDimTexture.allocate(meshTexture.getWidth(), meshTexture.getHeight());
