@@ -16,6 +16,22 @@ server.listen(SOCKET_IO_PORT);
 app.use(directory(WWW_ROOT));
 app.use(express.static(WWW_ROOT));
 
+var cameras = [
+    'BACK',
+    'CLOSE',
+    'CLOSESIDE',
+    'FAR',
+    'FRONT',
+    'RIGHT',
+    'LEFT',
+    'SUPERFAR',
+    'TOPDOWN',
+    'UNDER'
+];
+var cameraTimer;
+var flockingTimer;
+var flockingAmount = 0.8;
+
 io.sockets.on('connection', function (socket) {
 
 	// console.log('new connection: ' + socket.id);
@@ -29,9 +45,15 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on('load_model', function (data) {
-
 		var msg = 'load_model,' + data.slug + ',' + data.people;
-		if (OF) OF.send(msg);
+        console.log(msg);
+		
+        if (OF) {
+            flockingAmount = 1;
+            OF.send('flocking,1');
+            OF.send(msg);
+            setTimeout(reduceFlocking, 500);
+        }
 	});
 });
 
@@ -47,7 +69,7 @@ wss.on('connection', function(ws) {
         //console.log('received: %s', msg);
         // ws.send(msg + "\n");
 
-        // if (OF) OF.send(msg);
+        if (OF) OF.send(msg);
         
         var parts = msg.split(",");
         var event = parts[0];
@@ -55,6 +77,16 @@ wss.on('connection', function(ws) {
         if (event == "init-of") {
         	OF = ws;
         	ws.send("Hello, openFrameworks.");
+            cameraTimer = setInterval(setRandomCamera, 5000);
+        }
+
+        if (event == "load_model") {
+            if (OF) {
+                flockingAmount = 1;
+                OF.send('flocking,1');
+                OF.send(msg);
+                setTimeout(reduceFlocking, 1000);
+            }
         }
     
     });
@@ -64,7 +96,28 @@ wss.on('connection', function(ws) {
 
     	if (ws == OF) {
     		OF = null;
+            clearInterval(cameraTimer);
     	}
     })
 
 });
+
+var setRandomCamera = function() {
+    var cam = cameras[parseInt(cameras.length*Math.random())];
+    if (OF) OF.send('camera,' + cam);
+}
+
+var reduceFlocking = function() {
+    console.log('reduceFlocking');
+    console.log('flockingAmount', flockingAmount);
+
+    flockingAmount -= 0.1;
+    if (flockingAmount < 0) return;
+
+    if (OF) {
+        var msg = 'flocking,' + flockingAmount;
+        OF.send(msg);
+        console.log(msg);
+        setTimeout(reduceFlocking, 1000);
+    }
+}
