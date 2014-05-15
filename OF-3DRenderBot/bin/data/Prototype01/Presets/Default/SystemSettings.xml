@@ -2,8 +2,8 @@
     <Kind>40</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1323.000000000</XPosition>
-    <YPosition>105.000000000</YPosition>
+    <XPosition>1671.000000000</XPosition>
+    <YPosition>30.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>Faces_for_Frame</Name>
-    <Value>39</Value>
+    <Value>49</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,17 +28,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>attraction</Name>
-    <Value>0.064039409</Value>
+    <Value>0.088669948</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>attraction_radius</Name>
-    <Value>2.618226767</Value>
+    <Value>3.457586288</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>traction</Name>
-    <Value>0.093596056</Value>
+    <Value>0.118226603</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -63,12 +63,12 @@
 <Widget>
     <Kind>42</Kind>
     <Name>terrain_width</Name>
-    <Value>4039</Value>
+    <Value>2956</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>terrain_height</Name>
-    <Value>4138</Value>
+    <Value>2069</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -78,5 +78,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>terrain_wireframe_alpha</Name>
-    <Value>0.310344815</Value>
+    <Value>0.157635465</Value>
 </Widget>

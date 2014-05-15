@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>40</Kind>
     <Name>MATERIAL 1</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>229.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>435.000000000</XPosition>
+    <YPosition>704.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>dSAT</Name>
-    <Value>0.000000000</Value>
+    <Value>0.240837693</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -53,7 +53,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>eBRI</Name>
-    <Value>0.000000000</Value>
+    <Value>0.036649216</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

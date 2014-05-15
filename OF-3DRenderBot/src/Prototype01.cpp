@@ -11,7 +11,7 @@ void Prototype01::selfSetup(){
     ofEnableAlphaBlending();
     ofEnableSmoothing();
     
-    client.connect("localhost", 8081);
+    client.connect("149.31.203.9", 8081);
     client.addListener(this);
     
     terrainShader.load(getDataPath()+"shaders/terrain");
@@ -51,7 +51,7 @@ void Prototype01::selfSetupSystemGui(){
     
     sysGui->addLabel("Target");
     sysGui->addSlider("attraction", 0.0, 1.0, &targetAttraction);
-    sysGui->addSlider("attraction_radius", 0.01, 10.0, &targetRadius);
+    sysGui->addSlider("attraction_radius", 0.01, 50.0, &targetRadius);
     sysGui->addSlider("traction", 0.0, 1.0, &targetTraction);
     
     sysGui->addLabel("Flocking");
@@ -174,7 +174,8 @@ void Prototype01::selfUpdate(){
             //  You can make more going to the pannel that say "EASYCAM" and typing new names
             //  To transit between cameras position be sure to have the lerp in a low number.
             //
-            camera->load(getDataPath()+"cameras/"+values[1]+".cam");
+            string path = getDataPath()+"cameras/"+values[1]+".cam";
+            camera->load(path);
         }
         
         cmdBuffer.erase(cmdBuffer.begin()+0);
