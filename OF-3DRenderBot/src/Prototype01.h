@@ -16,6 +16,8 @@
 
 #include "Triangle.h"
 
+#include "UISEM.h"
+
 class Prototype01 : public UI3DProject {
 public:
     
@@ -80,14 +82,15 @@ protected:
     int                 nFaceCounter;
     int                 nFaceForFrame;
     
-    UIShader        sphEnvShader;
-    ofImage         sphEnvTexture;
-    
     void            terrainMake();
     UIShader        terrainShader;
     ofVboMesh       terrain;
     int             terrainWidth,terrainHeight;
     float           terrainScale, terrainWireframeAlpha;
+    
+    vector<string>  cmdBuffer;
+    
+    UISEM           sem;
     
     //  Flocking
     //

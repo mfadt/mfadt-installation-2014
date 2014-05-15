@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>40</Kind>
     <Name>EASYCAM</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>126.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1446.000000000</XPosition>
+    <YPosition>49.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,10 +18,40 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Lerp</Name>
-    <Value>0.832512319</Value>
+    <Value>0.827586234</Value>
 </Widget>
 <Widget>
     <Kind>12</Kind>
     <Name>ADD</Name>
-    <Value>&#x1B;</Value>
+    <Value></Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>&#x1B;FRONT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FAR</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RIGHT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UNDER</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>&#x1B;</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>&#x1B;SuperFar</Name>
+    <Value>1</Value>
 </Widget>

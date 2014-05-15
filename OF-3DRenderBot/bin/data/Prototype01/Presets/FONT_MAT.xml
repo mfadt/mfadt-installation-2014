@@ -3,7 +3,7 @@
     <Name>FONT_MAT</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>376.000000000</YPosition>
+    <YPosition>354.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>aBRI</Name>
-    <Value>0.000000000</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>dBRI</Name>
-    <Value>0.057591625</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -48,12 +48,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>eSAT</Name>
-    <Value>0.000000000</Value>
+    <Value>0.041884817</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>eBRI</Name>
-    <Value>0.000000000</Value>
+    <Value>0.612565458</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -68,10 +68,10 @@
 <Widget>
     <Kind>25</Kind>
     <Name>sBRI</Name>
-    <Value>0.000000000</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SHINY</Name>
-    <Value>0.000000000</Value>
+    <Value>1.000000000</Value>
 </Widget>

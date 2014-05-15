@@ -26,6 +26,8 @@
 		3DD5C158191274FA00A4383A /* Spring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C14C191274FA00A4383A /* Spring.cpp */; };
 		3DD5C159191274FA00A4383A /* SuperParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C14E191274FA00A4383A /* SuperParticle.cpp */; };
 		3DD5C15A191274FA00A4383A /* VectorField2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C150191274FA00A4383A /* VectorField2D.cpp */; };
+		3DDC5948191B200A00AA83BB /* UILUT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC5944191B200A00AA83BB /* UILUT.cpp */; };
+		3DDC5949191B200A00AA83BB /* UISEM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC5946191B200A00AA83BB /* UISEM.cpp */; };
 		3b8120368b4fccd80883baf3128d1467 /* ofxAssimpAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36068d6c1d6d412786a5c4c1868cfb5e /* ofxAssimpAnimation.cpp */; };
 		3d4ea8e172d3e4a30fefa969797f0789 /* ofxUIImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 938f5a098a216b403906129cc0e18a64 /* ofxUIImage.cpp */; };
 		43badbb2fe0f17d34b57a705622bd4a2 /* ofxUIScrollableCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = bfd3387aa9efa53e1b4f087b3fdfa1d3 /* ofxUIScrollableCanvas.cpp */; };
@@ -235,6 +237,10 @@
 		3DD5C14F191274FA00A4383A /* SuperParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperParticle.h; sourceTree = "<group>"; };
 		3DD5C150191274FA00A4383A /* VectorField2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VectorField2D.cpp; sourceTree = "<group>"; };
 		3DD5C151191274FA00A4383A /* VectorField2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorField2D.h; sourceTree = "<group>"; };
+		3DDC5944191B200A00AA83BB /* UILUT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UILUT.cpp; sourceTree = "<group>"; };
+		3DDC5945191B200A00AA83BB /* UILUT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILUT.h; sourceTree = "<group>"; };
+		3DDC5946191B200A00AA83BB /* UISEM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UISEM.cpp; sourceTree = "<group>"; };
+		3DDC5947191B200A00AA83BB /* UISEM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISEM.h; sourceTree = "<group>"; };
 		3b1e218bb487735b3b3c780d9b5f1836 /* UILight.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = UILight.h; path = ../../../addons/ofxUIProject/src/gl/UILight.h; sourceTree = SOURCE_ROOT; };
 		3c6ab2d7eed3856aaa37e28cad662b93 /* ofxFTGLSimpleLayout.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFTGLSimpleLayout.cpp; path = ../../../addons/ofxFTGL/src/ofxFTGLSimpleLayout.cpp; sourceTree = SOURCE_ROOT; };
 		3c6fee882262e92dcae3a37314dc6c40 /* UIEasyCam.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = UIEasyCam.h; path = ../../../addons/ofxUIProject/src/camera/UIEasyCam.h; sourceTree = SOURCE_ROOT; };
@@ -640,6 +646,18 @@
 			);
 			name = physics;
 			path = ../../../addons/ofxUIProject/extra/physics;
+			sourceTree = "<group>";
+		};
+		3DDC5943191B200A00AA83BB /* fx */ = {
+			isa = PBXGroup;
+			children = (
+				3DDC5944191B200A00AA83BB /* UILUT.cpp */,
+				3DDC5945191B200A00AA83BB /* UILUT.h */,
+				3DDC5946191B200A00AA83BB /* UISEM.cpp */,
+				3DDC5947191B200A00AA83BB /* UISEM.h */,
+			);
+			name = fx;
+			path = ../../../addons/ofxUIProject/src/fx;
 			sourceTree = "<group>";
 		};
 		4a2d2adb2f86b344049f4e46750c9606 /* FTGL */ = {
@@ -1192,6 +1210,7 @@
 		e7697fe6368558ac94fbe91fd2ea9d1a /* src */ = {
 			isa = PBXGroup;
 			children = (
+				3DDC5943191B200A00AA83BB /* fx */,
 				e003ae6fc774be38dc2b299156dc9db2 /* background */,
 				08d019f35d9b91cc701ccaa4cf141476 /* camera */,
 				29973ec1edba29209972f3166b9bb495 /* core */,
@@ -1347,6 +1366,7 @@
 				86135253dc7909ca8590e1574a6d2112 /* Protocol.cpp in Sources */,
 				6d73a566cfec0b462fe6e43c7cf4d23f /* Reactor.cpp in Sources */,
 				f3ad9e2a2e56b6af32a0bdaf2fc8a017 /* Server.cpp in Sources */,
+				3DDC5949191B200A00AA83BB /* UISEM.cpp in Sources */,
 				9f5c6dd965b4f3a6db5b88f87eccedae /* ofxUI2DGraph.cpp in Sources */,
 				4b3ed367ca852d522e2ee996fd98484a /* ofxUI2DPad.cpp in Sources */,
 				f1e8de8734ba6f69a5112fa8842e54b0 /* ofxUIBaseDraws.cpp in Sources */,
@@ -1408,6 +1428,7 @@
 				e34df0f08ae23dc9eca1cbe59b3e2bce /* UILight.cpp in Sources */,
 				7caf3ae440760530f4a24ddebaeb4f1c /* UIMaterial.cpp in Sources */,
 				66232392d8bafadd73d6fb46e40d2dd4 /* UIShader.cpp in Sources */,
+				3DDC5948191B200A00AA83BB /* UILUT.cpp in Sources */,
 				1df9eab8a056cc9b56abc933878c1edb /* Flickr.cpp in Sources */,
 				882e0def9fd925c7aaa940b82764a744 /* md5.cpp in Sources */,
 				c5e78b753aadc90c309573fa3f32fd15 /* Note.cpp in Sources */,

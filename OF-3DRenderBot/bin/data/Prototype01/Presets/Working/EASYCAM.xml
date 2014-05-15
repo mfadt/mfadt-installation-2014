@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Lerp</Name>
-    <Value>0.822660089</Value>
+    <Value>0.719211817</Value>
 </Widget>
 <Widget>
     <Kind>12</Kind>
@@ -27,8 +27,18 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>&#x1B;</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>&#x1B;FRONT</Name>
-    <Value>1</Value>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>&#x1B;SuperFar</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -43,5 +53,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>UNDER</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>

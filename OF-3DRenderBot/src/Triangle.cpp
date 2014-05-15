@@ -9,9 +9,9 @@
 #include "Triangle.h"
 
 void Triangle::rotateTo(const Triangle &_other,float _speed){
-    a.goTo((ofPoint)_other.a,1.0);
-    b.goTo((ofPoint)_other.b,1.0);
-    c.goTo((ofPoint)_other.c,1.0);
+    a.goTo((ofPoint)_other.a,1.9);
+    b.goTo((ofPoint)_other.b,1.9);
+    c.goTo((ofPoint)_other.c,1.9);
     
     //        if(a != _other.a){
     //            a = _other.a;
