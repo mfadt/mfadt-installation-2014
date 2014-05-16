@@ -51,22 +51,26 @@ $(document).ready( function() {
 
   //Send data to server if project/person is selected.
 
-  $('body').on('touch', '.project', function(){
+  $('body').on('tap', '.project', function(){
     var data = {
       project: $(this).attr('data-project'), 
       people: $(this).attr('data-people'),
       slug: $(this).attr('data-slug')
     };
     
+    console.log('touch');
+
     socket.emit('load_model', data);
   });
 
-  $('body').on('touch', '.person', function(){
+  $('body').on('tap', '.person', function(){
     var data = {
       project: $(this).attr('data-project'), 
       people: $(this).attr('data-people'),
       slug: $(this).attr('data-slug')
     };
+
+    console.log('touch');
 
     socket.emit('load_model', data);
   });
@@ -181,6 +185,60 @@ $(document).ready( function() {
       console.log('swipeup');
   });
 
+
+  //Swipe left for projects
+  var swipeLeft = document.querySelector('#swipe-left .arrow');
+  var swipeLeftInit = swipeLeft.style.width;
+  var headerLeft = new Hammer( swipeLeft, optionsX );
+
+  headerLeft.on("dragright", function(event) {
+    var pos = getPosition(swipeLeft);
+    if ( event.gesture.center.pageX < $(window).width() - 50) {
+      swipeLeft.style.width = event.gesture.center.pageX - pos.x;
+    }
+  });
+
+  headerLeft.on("release", function(event) {
+    if ( event.gesture.center.pageX > $(window).width() - 50 ) {
+        $('#content').css('overflow', 'scroll');
+        $('header').removeClass('header-visible').addClass('header-left');
+        $('#project-list').removeClass('projects-hidden').addClass('projects-visible');
+        state = -1;    
+        
+        swipeLeft.style.width = swipeLeftInit;
+      }
+    else {
+      swipeLeft.style.width = swipeLeftInit;
+    }
+  });
+
+  //Swipe right for people
+  var swipeRight = document.querySelector('#swipe-right .arrow');
+  var swipeRightInit = swipeRight.style.width;
+  var headerRight = new Hammer( swipeRight, optionsX );
+
+  headerRight.on("dragleft", function(event) {
+    var pos = getPosition(swipeRight);
+    var right = pos.x + swipeRight.offsetWidth;
+
+    if ( event.gesture.center.pageX > 75) {
+      swipeRight.style.width = right - event.gesture.center.pageX;
+    }
+  });
+
+  headerRight.on("release", function(event) {
+    if ( event.gesture.center.pageX < 75 ) {
+        $('header').removeClass('header-visible').addClass('header-right');
+        $('#people-list').removeClass('people-hidden').addClass('people-visible');
+        state = 1;
+        
+        swipeRight.style.width = swipeRightInit;
+      }
+    else {
+      swipeRight.style.width = swipeRightInit;
+    }
+  });
+
   // $('#project-list').scroll( function(event) {
   //   event.preventDefault();
   //   console.log('scroll');
@@ -203,6 +261,18 @@ $(document).ready( function() {
 
       return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
+  }
+
+  function getPosition(element) {
+    var xPosition = 0;
+    var yPosition = 0;
+  
+    while(element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+    }
+    return { x: xPosition, y: yPosition };
   }
 
 });

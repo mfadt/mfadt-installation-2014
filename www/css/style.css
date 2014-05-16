@@ -5,7 +5,7 @@ html, body {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 	background: url("../img/bg.png") center center;
-	background-size: contain;
+	background-size: cover;
 }
 
 #content {
@@ -31,8 +31,9 @@ header img {
 
 h2 {
 	color: #fff;
-	font-size: 2.2rem;
+	font-size: 1.6rem;
 	font-weight: 300;
+	display: inline;
 }
 
 h3 {
@@ -43,6 +44,57 @@ h3 {
 h4 {
 	font-weight: 700;
 	font-size: 0.8rem;
+}
+
+#swipe {
+	width: 100%;
+	height: 84px;
+	position: relative;
+}
+
+.swipe-div {
+	width: 100%;
+	height: 42px;
+	margin: 7px 0;
+	position: relative;
+}
+
+#swipe-left .name {
+	background: url("../img/projects_icon.png") center center no-repeat;
+	background-size: contain;
+	width: 80%;
+	height: 100%;
+	float: right;
+}
+
+#swipe-left .arrow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 20%;
+	height: 100%;
+	background: url("../img/smallarrow_right_purple.png") 90% 50% no-repeat;
+	background-size: contain;
+	background-color: #fff;
+}
+
+#swipe-right .name{
+	background: url("../img/people_icon.png") center center no-repeat;
+	background-size: contain;
+	width: 80%;
+	height: 100%;
+	float: left;
+}
+
+#swipe-right .arrow {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 20%;
+	height: 100%;
+	background: url("../img/smallarrow_left_purple.png") 10% 50% no-repeat;
+	background-size: contain;
+	background-color: #fff;
 }
 
 #search {
@@ -86,6 +138,7 @@ h4 {
 
 #instruction-swipe {
 	padding-top: 6%;
+	clear: both;
 }
 
 .instruction {
@@ -103,13 +156,9 @@ h4 {
 
 #project-title {
 	text-align: right;
-	background: url("../img/arrow_left.png") left center no-repeat;
-	background-size: 40%;
 }
 #people-title {
 	text-align: left;
-	background: url("../img/arrow_right.png") right center no-repeat;
-	background-size: 40%;
 }
 
 
