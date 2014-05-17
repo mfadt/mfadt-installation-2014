@@ -32,6 +32,9 @@ var cameraTimer;
 var flockingTimer;
 var flockingAmount = 0.8;
 
+var queue = require(WWW_ROOT + '/js/data.json');
+var queueTimer;
+
 io.sockets.on('connection', function (socket) {
 
 	// console.log('new connection: ' + socket.id);
@@ -77,7 +80,8 @@ wss.on('connection', function(ws) {
         if (event == "init-of") {
         	OF = ws;
         	ws.send("Hello, openFrameworks.");
-            cameraTimer = setInterval(setRandomCamera, 5000);
+            cameraTimer = setInterval(setRandomCamera, 5 * 1000);
+            queueTimer = setInterval(setRandomModel, 10 * 1000);
         }
 
         if (event == "load_model") {
@@ -97,14 +101,20 @@ wss.on('connection', function(ws) {
     	if (ws == OF) {
     		OF = null;
             clearInterval(cameraTimer);
+            clearInterval(queueTimer);
     	}
     })
 
 });
 
 var setRandomCamera = function() {
-    var cam = cameras[parseInt(cameras.length*Math.random())];
+    var cam = cameras[parseInt(cameras.length * Math.random())];
     if (OF) OF.send('camera,' + cam);
+}
+
+var setRandomModel = function() {
+    var data = queue[parseInt(queue.length * Math.random())];
+    if (OF) OF.send('load_model,' + data.slug + ',' + data.people);
 }
 
 var reduceFlocking = function() {
