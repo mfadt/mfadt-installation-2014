@@ -1,13 +1,10 @@
-$(document).ready( function() {
-
   var state = 0; // -1 is projects, 0 is normal, 1 is people
   var bIsSearch = false;
 
-
-  var dataForSearch = [];
+  var counter = 0;
+  var bIsSwiping = false;
 
   //Initialize socket and get data
-
   var socket = io.connect('http://' + window.location.hostname + ':8080');
   socket.on('connect', function() {
     console.log('connected!')
@@ -20,11 +17,8 @@ $(document).ready( function() {
   //Create content from data on page
 
   function createContent(data) {
-
     data = sortByKey(data, 'project');
     for (var i = 0; i < data.length; i++) {
-      dataForSearch.push( data[i].project);
-
       var p = document.createElement('div');
       p.classList.add('project');
       p.innerHTML = '<h3>' + data[i].project + '</h3><h4>' + data[i].people + '</h4>';
@@ -36,8 +30,6 @@ $(document).ready( function() {
 
     data = sortByKey(data, 'people');
     for (var i = 0; i < data.length; i++) {
-      dataForSearch.push( data[i].people);
-
       var n = document.createElement('div');
       n.classList.add('person');
       n.innerHTML = '<h3>' + data[i].people + '</h3><h4>' + data[i].project + '</h4>';
@@ -73,37 +65,6 @@ $(document).ready( function() {
     console.log('touch');
 
     socket.emit('load_model', data);
-  });
-
-
-  //Search
-  $('#search-input').autocomplete({
-    minLength: 2,
-    source: function(request, response) {
-      var results = $.ui.autocomplete.filter(dataForSearch, request.term);
-      response(results.slice(0, 3));
-    }
-  });
-
-  $('#search-input').blur(function() {
-    console.log( $('#search-input').val() );
-
-    //send socket info from val
-  });
-
-  //Search
-  $('#search-input').autocomplete({
-    minLength: 2,
-    source: function(request, response) {
-      var results = $.ui.autocomplete.filter(dataForSearch, request.term);
-      response(results.slice(0, 3));
-    }
-  });
-
-  $('#search-input').blur(function() {
-    console.log( $('#search-input').val() );
-
-    //send socket info from val
   });
 
   /**************************************************************************************/
@@ -163,35 +124,14 @@ $(document).ready( function() {
     }
   });
 
-  var optionsY = {
-    dragLockToAxis: true,
-  };
-  var hammertimeY = new Hammer(document, optionsY);
-
-  hammertimeY.on("swipedown", function(event) {
-    
-    if ( event.gesture.center.clientY < 300 && state == 0) {
-      $('#search').removeClass('search-hidden').addClass('search-visible');
-      bIsSearch = true;
-      $('#search-input').focus();
-      console.log('swipedown');
-    }
-  });
-
-  hammertimeY.on("swipeup", function(event) {
-      $('#search').removeClass('search-visible').addClass('search-hidden');
-      bIsSearch = false;
-      $('#search-input').blur().val('');
-      console.log('swipeup');
-  });
-
-
   //Swipe left for projects
   var swipeLeft = document.querySelector('#swipe-left .arrow');
   var swipeLeftInit = swipeLeft.style.width;
   var headerLeft = new Hammer( swipeLeft, optionsX );
 
   headerLeft.on("dragright", function(event) {
+    bIsSwiping = true;
+
     var pos = getPosition(swipeLeft);
     if ( event.gesture.center.pageX < $(window).width() - 50) {
       swipeLeft.style.width = event.gesture.center.pageX - pos.x;
@@ -199,6 +139,8 @@ $(document).ready( function() {
   });
 
   headerLeft.on("release", function(event) {
+    bIsSwiping = false;
+
     if ( event.gesture.center.pageX > $(window).width() - 50 ) {
         $('#content').css('overflow', 'scroll');
         $('header').removeClass('header-visible').addClass('header-left');
@@ -218,6 +160,8 @@ $(document).ready( function() {
   var headerRight = new Hammer( swipeRight, optionsX );
 
   headerRight.on("dragleft", function(event) {
+    bIsSwiping = true;
+
     var pos = getPosition(swipeRight);
     var right = pos.x + swipeRight.offsetWidth;
 
@@ -227,6 +171,8 @@ $(document).ready( function() {
   });
 
   headerRight.on("release", function(event) {
+    bIsSwiping = false;
+
     if ( event.gesture.center.pageX < 75 ) {
         $('header').removeClass('header-visible').addClass('header-right');
         $('#people-list').removeClass('people-hidden').addClass('people-visible');
@@ -239,10 +185,32 @@ $(document).ready( function() {
     }
   });
 
-  // $('#project-list').scroll( function(event) {
-  //   event.preventDefault();
-  //   console.log('scroll');
-  // });
+  /**************************************************************************************/
+  //Animate swipe
+
+  function animate() {
+
+    if (bIsSwiping) {
+      $('#swipe-left').css( "opacity", "1.0" );
+      $('#swipe-right').css( "opacity", "1.0" );
+    }
+    else {
+      var leftFade = Math.sin( counter ) * 0.15 + 0.85;
+      var rightFade = Math.cos( counter ) * 0.15 + 0.85;
+
+      $('#swipe-left').css( "opacity", leftFade );
+      $('#swipe-right').css( "opacity", rightFade );
+
+      counter += 0.06;
+    }
+
+
+    window.requestAnimationFrame(animate);
+  }
+
+  animate();
+
+
 
   /**************************************************************************************/
   /************************************** HELPERS ***************************************/
@@ -274,5 +242,3 @@ $(document).ready( function() {
     }
     return { x: xPosition, y: yPosition };
   }
-
-});
