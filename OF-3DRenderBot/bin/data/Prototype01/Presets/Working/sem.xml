@@ -3,7 +3,7 @@
     <Name>SEM</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>426.000000000</YPosition>
+    <YPosition>401.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>05.jpg</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,5 +48,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>08.jpg</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

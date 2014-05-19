@@ -35,7 +35,6 @@ void Prototype01::selfSetup(){
 void Prototype01::selfSetupGuis(){
     backgroundSet(new UIMapBackground());
     lightAdd("SPOT", OF_LIGHT_SPOT);
-    materialAdd("FONT_MAT");
     guiAdd(terrainShader);
     guiAdd(sem);
 }
@@ -80,25 +79,16 @@ void Prototype01::guiSystemEvent(ofxUIEventArgs &e){
 void Prototype01::selfSetupRenderGui(){
     
     rdrGui->addSlider("Texture_Alpha", 0.0, 1.0, &meshTextureAlpha);
-    
-    rdrGui->addLabel("Name_Font");
-    rdrGui->addSlider("Name_Font_Size", 0, 60, &fontNameSize);
-    rdrGui->addSlider("Name_Font_Deep", 0, 20, &fontNameDeep);
-    rdrGui->addSlider("Name-Font_Alpha", 0, 1, &fontNameAlpha);
 }
 
 void Prototype01::guiRenderEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     
-    if(name.find("Name_Font") == 0){
-        font.loadFont(getDataPath()+"Exo2-Light.ttf", fontNameSize, fontNameDeep);
-    }
 }
 
 //---------------------------------------------------
 
 void Prototype01::selfBegin(){
-    font.loadFont(getDataPath()+"Exo2-Light.ttf", fontNameSize, fontNameDeep);
     font2D.loadFont(getDataPath()+"Exo2-Light.ttf", 44);
     font2D.setSpaceSize(0.65);
     
@@ -383,17 +373,6 @@ void Prototype01::selfDraw(){
     }
     ofPopMatrix();
     materials["MATERIAL 1"]->end();
-    
-//    materials["FONT_MAT"]->begin();
-//    ofPushMatrix();
-//    ofTranslate(0, -20, 20);
-//    ofScale(1, -1, 1);  // Flip back since we're in 3D.
-//    ofSetColor(255,255*fontNameAlpha);
-//    font.drawString(textName, font.stringWidth(textName) * -0.5f, font.stringHeight(textName) * 0.5f);
-//    ofPopMatrix();
-//    materials["FONT_MAT"]->end();
-//    
-//    ofPopMatrix();
 }
 
 void Prototype01::selfDrawOverlay(){
@@ -403,8 +382,7 @@ void Prototype01::selfDrawOverlay(){
     
 
     ofScale(1, 1, 1);  // Flip back since we're in 3D.
-    ofSetColor(255,255*fontNameAlpha);
-//    font.drawString(textName, font.stringWidth(textName) * -0.5f, font.stringHeight(textName) * 0.5f);
+    ofSetColor(255,255);
     font2D.drawString(textName, 45, ofGetHeight() - 90);
     font2D.drawString(textProject, 45 ,ofGetHeight() - 30);
     
