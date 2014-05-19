@@ -11,7 +11,7 @@ void Prototype01::selfSetup(){
     ofEnableAlphaBlending();
     ofEnableSmoothing();
     
-    client.connect("149.31.203.9", 8081);
+    client.connect("localhost", 8081);
     client.addListener(this);
     
     terrainShader.load(getDataPath()+"shaders/terrain");
@@ -26,6 +26,8 @@ void Prototype01::selfSetup(){
     bNext = true;
     nCounter = 0;
     nFaceCounter = 0;
+    
+    textName = textProject = "";
 
     globalOffset.set(0,0,0);
 }
@@ -97,6 +99,10 @@ void Prototype01::guiRenderEvent(ofxUIEventArgs &e){
 
 void Prototype01::selfBegin(){
     font.loadFont(getDataPath()+"Exo2-Light.ttf", fontNameSize, fontNameDeep);
+    font2D.loadFont(getDataPath()+"Exo2-Light.ttf", 44);
+    font2D.setSpaceSize(0.65);
+    
+    logo.loadImage(getDataPath() + "dtlogo-white.png");
 }
 
 void Prototype01::terrainMake(){
@@ -162,6 +168,13 @@ void Prototype01::selfUpdate(){
             nFaceCounter = 0;
             
             textName = values[2];
+            
+            // get rid of first few values and then join the rest
+            // needed because some projects have commas in the title
+            values.erase(values.begin()); // get rid of command
+            values.erase(values.begin()); // get rid of folder name
+            values.erase(values.begin()); // get rid of person's name
+            textProject = ofJoinString(values, ",");
             
         } else if (values[0] == "texture_alpha"){
             meshTextureAlpha = ofToFloat(values[1]);
@@ -371,24 +384,31 @@ void Prototype01::selfDraw(){
     ofPopMatrix();
     materials["MATERIAL 1"]->end();
     
-    materials["FONT_MAT"]->begin();
-    ofPushMatrix();
-    ofTranslate(0, -20, 20);
-    ofScale(1, -1, 1);  // Flip back since we're in 3D.
-    ofSetColor(255,255*fontNameAlpha);
-    font.drawString(textName, font.stringWidth(textName) * -0.5f, font.stringHeight(textName) * 0.5f);
-    ofPopMatrix();
-    materials["FONT_MAT"]->end();
-    
-    ofPopMatrix();
+//    materials["FONT_MAT"]->begin();
+//    ofPushMatrix();
+//    ofTranslate(0, -20, 20);
+//    ofScale(1, -1, 1);  // Flip back since we're in 3D.
+//    ofSetColor(255,255*fontNameAlpha);
+//    font.drawString(textName, font.stringWidth(textName) * -0.5f, font.stringHeight(textName) * 0.5f);
+//    ofPopMatrix();
+//    materials["FONT_MAT"]->end();
+//    
+//    ofPopMatrix();
 }
 
 void Prototype01::selfDrawOverlay(){
     
-    //  MAT: here you draw in 2D like a regular app in case you want to add overall information/images/etc
-    //
-//    ofDrawBitmapString("Hi there!", ofGetWidth()*0.5,ofGetHeight()*0.5);
+    float nameHeight = font2D.stringHeight(textName);
+    float projectHeight = font2D.stringHeight(textProject);
     
+
+    ofScale(1, 1, 1);  // Flip back since we're in 3D.
+    ofSetColor(255,255*fontNameAlpha);
+//    font.drawString(textName, font.stringWidth(textName) * -0.5f, font.stringHeight(textName) * 0.5f);
+    font2D.drawString(textName, 45, ofGetHeight() - 90);
+    font2D.drawString(textProject, 45 ,ofGetHeight() - 30);
+    
+    logo.draw(45, 45, logo.width * 0.5f, logo.height * 0.5f);
 }
 
 void Prototype01::selfEnd(){
