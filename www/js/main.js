@@ -4,6 +4,9 @@
   var counter = 0;
   var bIsSwiping = false;
 
+  var dataForSearch = [];
+  var allData;
+
   //Initialize socket and get data
   var socket = io.connect('http://' + window.location.hostname + ':8080');
   socket.on('connect', function() {
@@ -12,6 +15,7 @@
 
   socket.on('init', function (data) {
     createContent(data);
+    allData = data;
   });
 
   //Create content from data on page
@@ -30,6 +34,8 @@
 
     data = sortByKey(data, 'people');
     for (var i = 0; i < data.length; i++) {
+      dataForSearch.push( data[i].people);
+
       var n = document.createElement('div');
       n.classList.add('person');
       n.innerHTML = '<h3>' + data[i].people + '</h3><h4>' + data[i].project + '</h4>';
@@ -65,6 +71,44 @@
     console.log('touch');
 
     socket.emit('load_model', data);
+  });
+
+  //Search
+  $('#search-input').autocomplete({
+    minLength: 2,
+    source: function(request, response) {
+      var results = $.ui.autocomplete.filter(dataForSearch, request.term);
+      response(results.slice(0, 3));
+    },
+  });
+
+  $('#search-input').on('autocompleteselect', function( event, ui ) {
+    var result = ui.item.value;
+
+    var people = document.querySelectorAll('.person');
+    for ( var i = 0; i < people.length; i++ ) {
+      if ( result == people[i].getAttribute('data-people') ) {
+        var data = {
+          project: people[i].getAttribute('data-project'), 
+          people: people[i].getAttribute('data-people'),
+          slug: people[i].getAttribute('data-slug')
+        };
+
+        console.log('search');
+
+        socket.emit('load_model', data);
+      }
+    }
+
+    search.style.height = 0;
+    bIsSearch = false;
+    $('#search-input').val('');
+    $('#search-input').blur();
+  });
+
+  $('#search-input').blur(function() {
+    bIsSearch = false;
+    $('#search-input').val('');
   });
 
   /**************************************************************************************/
@@ -184,6 +228,55 @@
       swipeRight.style.width = swipeRightInit;
     }
   });
+
+
+  //Swipe down for search.
+  var optionsSearch = {
+    preventDefault: true
+  };
+
+  var swipeDown = document.querySelector('#instruction-search');
+  var search = document.querySelector('#search');
+  var hammerGetSearch = new Hammer( swipeDown, optionsSearch );
+
+  hammerGetSearch.on("dragdown", function(event) {
+    $('#search-input').val('');
+    var pos = getPosition(swipeDown);
+    search.style.height = event.gesture.center.pageY - pos.y;
+  });
+
+  hammerGetSearch.on("release", function(event) {
+    if ( event.gesture.center.pageY > document.body.offsetHeight / 2 ) {
+      search.style.height = "100%";
+      bIsSearch = true;
+      $('#search-input').focus();
+    }
+    else {
+      search.style.height = 0;
+    }
+  });  
+
+
+  //Swipe up to get rid of search
+  hammerLoseSearch = new Hammer( search, optionsSearch );
+
+  hammerLoseSearch.on("dragup", function(event) {
+    var pos = getPosition(swipeDown);
+    search.style.height = event.gesture.center.pageY - pos.y;
+  });
+
+  hammerLoseSearch.on("release", function(event) {
+    if ( event.gesture.center.pageY < document.body.offsetHeight / 2 ) {
+      search.style.height = 0;
+      bIsSearch = false;
+      $('#search-input').val('');
+      $('#search-input').blur();
+    }
+    else {
+      search.style.height = "100%";
+    }
+  });  
+
 
   /**************************************************************************************/
   //Animate swipe
