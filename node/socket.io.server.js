@@ -53,6 +53,8 @@ io.sockets.on('connection', function (socket) {
         console.log(msg);
 		
         sendModel(msg);
+        clear(queueTimer);
+        queueTimer = setInterval(setRandomModel, 20 * 1000);
 	});
 });
 
@@ -110,7 +112,7 @@ var setRandomModel = function() {
 
 var sendModel = function(msg) {
     if (OF) {
-	flockingAmount = 1;
+    	flockingAmount = 1;
         OF.send('flocking,1');
         OF.send(msg);
         setTimeout(reduceFlocking, 1 * 1000);
