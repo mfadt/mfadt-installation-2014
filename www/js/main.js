@@ -102,15 +102,14 @@
 
     search.style.height = 0;
     bIsSearch = false;
-    $('#search-input').val('');
-    $('#search-input').blur();
+    
   });
 
   $('#search-input').blur(function() {
       search.style.height = 0;
       bIsSearch = false;
       $('#search-input').val('');
-      $('#search-input').blur();
+      
   });
 
   /**************************************************************************************/
@@ -120,6 +119,7 @@
   var optionsX = {
     dragLockToAxis: true,
     dragBlockHorizontal: true,
+    swipeVelocityX: 0.1
   };
   var hammertimeX = new Hammer(document, optionsX);
 
@@ -127,7 +127,6 @@
     event.gesture.preventDefault();
 
     if (!bIsSearch) {
-      $('#search-input').blur();
       if (state == -1) {
         //do nothing
       }
@@ -148,10 +147,7 @@
   });
 
   hammertimeX.on("swipeleft", function(event) {
-    event.gesture.preventDefault();
-
     if (!bIsSearch) {
-      $('#search-input').blur();
       if (state == -1) {
         $('#content').scrollTop( 0 );
         $('header').removeClass('header-left').addClass('header-visible');
@@ -298,7 +294,6 @@
 
       counter += 0.06;
     }
-
 
     window.requestAnimationFrame(animate);
   }
