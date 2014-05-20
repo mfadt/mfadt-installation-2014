@@ -65,10 +65,10 @@ protected:
 	int				lastReconnectAttempt;
     ofxLibwebsockets::Client client;
     
-    ofTrueTypeFont  font2D;
+    ofTrueTypeFont  font, fontURL;
     string          textName, textProject;
     
-    ofImage         logo;
+    ofImage         logo, phone;
     
     //  3D Models
     //

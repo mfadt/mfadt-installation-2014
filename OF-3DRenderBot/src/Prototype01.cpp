@@ -10,6 +10,8 @@ void Prototype01::selfSetup(){
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
     ofEnableSmoothing();
+
+    ofHideCursor();
     
 	websocketServer = "dev.mfadt.com";
 	bConnected = false;
@@ -91,10 +93,14 @@ void Prototype01::guiRenderEvent(ofxUIEventArgs &e){
 //---------------------------------------------------
 
 void Prototype01::selfBegin(){
-    font2D.loadFont(getDataPath()+"Exo2-Light.ttf", 44);
-    font2D.setSpaceSize(0.65);
+    font.loadFont(getDataPath()+"Exo2-Light.ttf", 44);
+    font.setSpaceSize(0.65);
+
+    fontURL.loadFont(getDataPath()+"Exo2-Light.ttf", 30);
+    font.setSpaceSize(0.65);
     
     logo.loadImage(getDataPath() + "dtlogo-white.png");
+    phone.loadImage(getDataPath() + "iphone.png");
 }
 
 void Prototype01::terrainMake(){
@@ -385,16 +391,20 @@ void Prototype01::selfDraw(){
 
 void Prototype01::selfDrawOverlay(){
     
-    float nameHeight = font2D.stringHeight(textName);
-    float projectHeight = font2D.stringHeight(textProject);
-    
 
-    ofScale(1, 1, 1);  // Flip back since we're in 3D.
+    //ofScale(1, 1, 1);  // Flip back since we're in 3D.
     ofSetColor(255,255);
-    font2D.drawString(textName, 45, ofGetHeight() - 90);
-    font2D.drawString(textProject, 45 ,ofGetHeight() - 30);
     
     logo.draw(45, 45, logo.width * 0.5f, logo.height * 0.5f);
+    
+//    fontURL.drawString("Meet the students\nat bit.ly/mfa3d", 600, 70);
+    phone.draw(605, 40, 39, 73);
+    fontURL.drawString("Control this app\nat bit.ly/mfa3d", 670, 70);
+
+    
+    font.drawString(textName, 45, ofGetHeight() - 90);
+    font.drawString(textProject, 45 ,ofGetHeight() - 30);
+
 }
 
 void Prototype01::selfEnd(){
@@ -414,6 +424,7 @@ void Prototype01::onConnect( ofxLibwebsockets::Event& args ){
 void Prototype01::onOpen( ofxLibwebsockets::Event& args ){
     cout<<"on open"<<endl;
     client.send("init-of");
+    bConnected = true;
 }
 
 //--------------------------------------------------------------

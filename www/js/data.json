@@ -378,5 +378,10 @@
         "project": "Without You",
         "people": "Zixin Wang",
         "slug": "zixin-wang"
+    },
+    {
+        "project": "Open Source Pregnancy",
+        "people": "Tripp Nezbit",
+        "slug": "tripp-nezbit"
     }
 ]
