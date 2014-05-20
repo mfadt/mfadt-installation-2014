@@ -11,7 +11,9 @@ void Prototype01::selfSetup(){
     ofEnableAlphaBlending();
     ofEnableSmoothing();
     
-    client.connect("localhost", 8081);
+	websocketServer = "dev.mfadt.com";
+	bConnected = false;
+    client.connect(websocketServer, 8081);
     client.addListener(this);
     
     terrainShader.load(getDataPath()+"shaders/terrain");
@@ -134,7 +136,13 @@ void Prototype01::terrainMake(){
 }
 
 void Prototype01::selfUpdate(){
-    
+
+	// check websocket connection
+	if (!bConnected && ofGetElapsedTimeMillis() - lastReconnectAttempt > 5000) {
+		lastReconnectAttempt = ofGetElapsedTimeMillis();
+		client.connect(websocketServer, 8081);
+	}
+	
     while (cmdBuffer.size()>0) {
         vector<string> values = ofSplitString(cmdBuffer[0], ",");
         
@@ -399,6 +407,7 @@ void Prototype01::selfExit(){
 //--------------------------------------------------------------
 void Prototype01::onConnect( ofxLibwebsockets::Event& args ){
     cout<<"on connected"<<endl;
+	bConnected = true;
 }
 
 //--------------------------------------------------------------
@@ -409,7 +418,10 @@ void Prototype01::onOpen( ofxLibwebsockets::Event& args ){
 
 //--------------------------------------------------------------
 void Prototype01::onClose( ofxLibwebsockets::Event& args ){
-    cout<<"on close"<<endl;}
+    cout<<"on close"<<endl;
+	bConnected = false;
+	lastReconnectAttempt = ofGetElapsedTimeMillis();
+}
 
 //--------------------------------------------------------------
 void Prototype01::onIdle( ofxLibwebsockets::Event& args ){

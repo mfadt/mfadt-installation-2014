@@ -59,6 +59,10 @@ public:
     void onBroadcast( ofxLibwebsockets::Event& args );
     
 protected:
+	
+	string			websocketServer;
+	bool			bConnected;
+	int				lastReconnectAttempt;
     ofxLibwebsockets::Client client;
     
     ofTrueTypeFont  font2D;
