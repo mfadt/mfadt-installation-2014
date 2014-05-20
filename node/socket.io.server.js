@@ -53,7 +53,7 @@ io.sockets.on('connection', function (socket) {
         console.log(msg);
 		
         sendModel(msg);
-        clear(queueTimer);
+        clearInterval(queueTimer);
         queueTimer = setInterval(setRandomModel, 20 * 1000);
 	});
 });
