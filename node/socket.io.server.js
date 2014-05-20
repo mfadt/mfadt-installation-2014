@@ -28,13 +28,14 @@ var cameras = [
     'TOPDOWN',
     'UNDER'
 ];
-var cameraTimer;
+var cameraTimer = setInterval(setRandomCamera, 7 * 1000);;
+
 var flockingTimer;
 var flockingAmount = 0.8;
 
 var queue = require(WWW_ROOT + '/js/data.json');
 queue.sort(randomize);
-var queueTimer;
+var queueTimer = setInterval(setRandomModel, 20 * 1000);
 
 io.sockets.on('connection', function (socket) {
 
@@ -50,11 +51,11 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('load_model', function (data) {
 		var msg = 'load_model,' + data.slug + ',' + data.people + ',' + data.project;
-        console.log(msg);
-		
-        sendModel(msg);
-        clearInterval(queueTimer);
-        queueTimer = setInterval(setRandomModel, 20 * 1000);
+        	console.log(msg);
+
+		sendModel(msg);
+		clearInterval(queueTimer);
+		queueTimer = setInterval(setRandomModel, 20 * 1000);
 	});
 });
 
@@ -76,10 +77,10 @@ wss.on('connection', function(ws) {
         var event = parts[0];
 
         if (event == "init-of") {
-        	OF = ws;
-        	ws.send("Hello, openFrameworks.");
-            cameraTimer = setInterval(setRandomCamera, 7 * 1000);
-            queueTimer = setInterval(setRandomModel, 20 * 1000);
+            OF = ws;
+            ws.send("Hello, openFrameworks.");
+            //cameraTimer = setInterval(setRandomCamera, 7 * 1000);
+            //queueTimer = setInterval(setRandomModel, 20 * 1000);
         }
 
         if (event == "load_model") {
@@ -91,26 +92,26 @@ wss.on('connection', function(ws) {
     ws.on('close', function() {
     	console.log("[WS] :: A websocket was closed.");
 
-    	if (ws == OF) {
+    	//if (ws == OF) {
     		OF = null;
-            clearInterval(cameraTimer);
-            clearInterval(queueTimer);
-    	}
+	//	clearInterval(cameraTimer);
+	//	clearInterval(queueTimer);
+    	//}
     })
 
 });
 
-var setRandomCamera = function() {
+function setRandomCamera() {
     var cam = cameras[parseInt(cameras.length * Math.random())];
     if (OF) OF.send('camera,' + cam);
 }
 
-var setRandomModel = function() {
+function setRandomModel() {
     var data = queue[parseInt(queue.length * Math.random())];
     sendModel('load_model,' + data.slug + ',' + data.people + ',' + data.project);
 }
 
-var sendModel = function(msg) {
+function sendModel(msg) {
     if (OF) {
     	flockingAmount = 1;
         OF.send('flocking,1');
@@ -119,7 +120,7 @@ var sendModel = function(msg) {
     }
 }
 
-var reduceFlocking = function() {
+function reduceFlocking() {
     //console.log('flockingAmount', flockingAmount);
 
     flockingAmount -= 0.1;
@@ -133,6 +134,6 @@ var reduceFlocking = function() {
     }
 }
 
-var randomize = function(a, b) {
+function randomize(a, b) {
     return Math.random() - 0.5;
 }
