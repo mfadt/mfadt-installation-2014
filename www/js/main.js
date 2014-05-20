@@ -107,8 +107,10 @@
   });
 
   $('#search-input').blur(function() {
-    bIsSearch = false;
-    $('#search-input').val('');
+      search.style.height = 0;
+      bIsSearch = false;
+      $('#search-input').val('');
+      $('#search-input').blur();
   });
 
   /**************************************************************************************/
