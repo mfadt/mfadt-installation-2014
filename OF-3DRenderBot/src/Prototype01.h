@@ -61,9 +61,7 @@ public:
 protected:
     ofxLibwebsockets::Client client;
     
-    ofxFTGLFont     font;
     ofTrueTypeFont  font2D;
-    float           fontNameSize, fontNameDeep, fontNameAlpha;
     string          textName, textProject;
     
     ofImage         logo;
