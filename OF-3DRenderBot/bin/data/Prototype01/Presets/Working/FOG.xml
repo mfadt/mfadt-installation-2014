@@ -8,12 +8,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Density</Name>
-    <Value>0.059113301</Value>
+    <Value>0.049261082</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

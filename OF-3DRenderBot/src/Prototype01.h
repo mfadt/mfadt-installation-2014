@@ -59,11 +59,16 @@ public:
     void onBroadcast( ofxLibwebsockets::Event& args );
     
 protected:
+	
+	string			websocketServer;
+	bool			bConnected;
+	int				lastReconnectAttempt;
     ofxLibwebsockets::Client client;
     
-    ofxFTGLFont     font;
-    float           fontNameSize, fontNameDeep, fontNameAlpha;
-    string          textName;
+    ofTrueTypeFont  font2D;
+    string          textName, textProject;
+    
+    ofImage         logo;
     
     //  3D Models
     //

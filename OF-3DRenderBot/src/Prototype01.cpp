@@ -11,7 +11,9 @@ void Prototype01::selfSetup(){
     ofEnableAlphaBlending();
     ofEnableSmoothing();
     
-    client.connect("149.31.203.9", 8081);
+	websocketServer = "dev.mfadt.com";
+	bConnected = false;
+    client.connect(websocketServer, 8081);
     client.addListener(this);
     
     terrainShader.load(getDataPath()+"shaders/terrain");
@@ -26,6 +28,8 @@ void Prototype01::selfSetup(){
     bNext = true;
     nCounter = 0;
     nFaceCounter = 0;
+    
+    textName = textProject = "";
 
     globalOffset.set(0,0,0);
 }
@@ -33,7 +37,6 @@ void Prototype01::selfSetup(){
 void Prototype01::selfSetupGuis(){
     backgroundSet(new UIMapBackground());
     lightAdd("SPOT", OF_LIGHT_SPOT);
-    materialAdd("FONT_MAT");
     guiAdd(terrainShader);
     guiAdd(sem);
 }
@@ -78,25 +81,20 @@ void Prototype01::guiSystemEvent(ofxUIEventArgs &e){
 void Prototype01::selfSetupRenderGui(){
     
     rdrGui->addSlider("Texture_Alpha", 0.0, 1.0, &meshTextureAlpha);
-    
-    rdrGui->addLabel("Name_Font");
-    rdrGui->addSlider("Name_Font_Size", 0, 60, &fontNameSize);
-    rdrGui->addSlider("Name_Font_Deep", 0, 20, &fontNameDeep);
-    rdrGui->addSlider("Name-Font_Alpha", 0, 1, &fontNameAlpha);
 }
 
 void Prototype01::guiRenderEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     
-    if(name.find("Name_Font") == 0){
-        font.loadFont(getDataPath()+"Exo2-Light.ttf", fontNameSize, fontNameDeep);
-    }
 }
 
 //---------------------------------------------------
 
 void Prototype01::selfBegin(){
-    font.loadFont(getDataPath()+"Exo2-Light.ttf", fontNameSize, fontNameDeep);
+    font2D.loadFont(getDataPath()+"Exo2-Light.ttf", 44);
+    font2D.setSpaceSize(0.65);
+    
+    logo.loadImage(getDataPath() + "dtlogo-white.png");
 }
 
 void Prototype01::terrainMake(){
@@ -138,7 +136,13 @@ void Prototype01::terrainMake(){
 }
 
 void Prototype01::selfUpdate(){
-    
+
+	// check websocket connection
+	if (!bConnected && ofGetElapsedTimeMillis() - lastReconnectAttempt > 5000) {
+		lastReconnectAttempt = ofGetElapsedTimeMillis();
+		client.connect(websocketServer, 8081);
+	}
+	
     while (cmdBuffer.size()>0) {
         vector<string> values = ofSplitString(cmdBuffer[0], ",");
         
@@ -162,6 +166,13 @@ void Prototype01::selfUpdate(){
             nFaceCounter = 0;
             
             textName = values[2];
+            
+            // get rid of first few values and then join the rest
+            // needed because some projects have commas in the title
+            values.erase(values.begin()); // get rid of command
+            values.erase(values.begin()); // get rid of folder name
+            values.erase(values.begin()); // get rid of person's name
+            textProject = ofJoinString(values, ",");
             
         } else if (values[0] == "texture_alpha"){
             meshTextureAlpha = ofToFloat(values[1]);
@@ -370,25 +381,20 @@ void Prototype01::selfDraw(){
     }
     ofPopMatrix();
     materials["MATERIAL 1"]->end();
-    
-    materials["FONT_MAT"]->begin();
-    ofPushMatrix();
-    ofTranslate(0, -20, 20);
-    ofScale(1, -1, 1);  // Flip back since we're in 3D.
-    ofSetColor(255,255*fontNameAlpha);
-    font.drawString(textName, font.stringWidth(textName) * -0.5f, font.stringHeight(textName) * 0.5f);
-    ofPopMatrix();
-    materials["FONT_MAT"]->end();
-    
-    ofPopMatrix();
 }
 
 void Prototype01::selfDrawOverlay(){
     
-    //  MAT: here you draw in 2D like a regular app in case you want to add overall information/images/etc
-    //
-//    ofDrawBitmapString("Hi there!", ofGetWidth()*0.5,ofGetHeight()*0.5);
+    float nameHeight = font2D.stringHeight(textName);
+    float projectHeight = font2D.stringHeight(textProject);
     
+
+    ofScale(1, 1, 1);  // Flip back since we're in 3D.
+    ofSetColor(255,255);
+    font2D.drawString(textName, 45, ofGetHeight() - 90);
+    font2D.drawString(textProject, 45 ,ofGetHeight() - 30);
+    
+    logo.draw(45, 45, logo.width * 0.5f, logo.height * 0.5f);
 }
 
 void Prototype01::selfEnd(){
@@ -401,6 +407,7 @@ void Prototype01::selfExit(){
 //--------------------------------------------------------------
 void Prototype01::onConnect( ofxLibwebsockets::Event& args ){
     cout<<"on connected"<<endl;
+	bConnected = true;
 }
 
 //--------------------------------------------------------------
@@ -411,7 +418,10 @@ void Prototype01::onOpen( ofxLibwebsockets::Event& args ){
 
 //--------------------------------------------------------------
 void Prototype01::onClose( ofxLibwebsockets::Event& args ){
-    cout<<"on close"<<endl;}
+    cout<<"on close"<<endl;
+	bConnected = false;
+	lastReconnectAttempt = ofGetElapsedTimeMillis();
+}
 
 //--------------------------------------------------------------
 void Prototype01::onIdle( ofxLibwebsockets::Event& args ){

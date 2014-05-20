@@ -75,7 +75,7 @@
         "slug": "jason-lalor"
     },
     {
-        "project": "Yuanjin Zhao Project",
+        "project": "Jean's BentoBox",
         "people": "Jean Zhao",
         "slug": "jean-zhao"
     },
@@ -126,7 +126,12 @@
     },
     {
         "project": "STEAMPunks",
-        "people": "Kristen Kersh + Mehdi Salehi",
+        "people": "Kristen Kersh",
+        "slug": "kristen-kersh"
+    },
+    {
+        "project": "STEAMPunks",
+        "people": "Mehdi Salehi",
         "slug": "mehdi-salehi"
     },
     {
@@ -205,14 +210,24 @@
         "slug": "mennie-hsiu-ying-shen"
     },
     {
-        "project": "Fútbol Forever",
-        "people": "K. Anthony Marefat + Michael Kahane",
+        "project": "Futbol Forever",
+        "people": "Michael Kahane",
         "slug": "michael-kahane"
     },
     {
+        "project": "Futbol Forever",
+        "people": "K. Anthony Marefat",
+        "slug": "k-anthony-marefat"
+    },
+    {
         "project": "HIDE",
-        "people": "Maxine Jungyeon Kim + Min Sung Kwak",
+        "people": "Min Sung Kwak",
         "slug": "min-sung-kwak"
+    },
+    {
+        "project": "HIDE",
+        "people": "Maxine Jungyeon Kim",
+        "slug": "maxine-jungyeon-kim"
     },
     {
         "project": "2 or 3 Things I Know About Electronic Waste",
@@ -251,7 +266,7 @@
     },
     {
         "project": "Skylines",
-        "people": "Patricio González Vivo",
+        "people": "Patricio Gonzalez Vivo",
         "slug": "patricio-gonzalez-vivo"
     },
     {
@@ -311,7 +326,7 @@
     },
     {
         "project": "See-V",
-        "people": "Susse Sønderby Jensen",
+        "people": "Susse Sonderby Jensen",
         "slug": "susse-sonderby-jensen"
     },
     {
